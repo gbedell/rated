@@ -19,9 +19,13 @@
 		D4BDF50D1D7CDB2F003A3C60 /* CreateRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF50C1D7CDB2F003A3C60 /* CreateRatingViewController.swift */; };
 		D4D1DC9B1D7DB84B00953494 /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1DC9A1D7DB84B00953494 /* RatingTableViewCell.swift */; };
 		D4D1DC9D1D7E436800953494 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1DC9C1D7E436800953494 /* RatingViewController.swift */; };
+		F21F573B6EBD1F94C93B293D /* Pods_Rated.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 351FFEC6968950CDA4FAB1BE /* Pods_Rated.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		351FFEC6968950CDA4FAB1BE /* Pods_Rated.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rated.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F5B67E4218568EA4FD663C8 /* Pods-Rated.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rated.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rated/Pods-Rated.release.xcconfig"; sourceTree = "<group>"; };
+		D26C0D4A570B0036308A69FE /* Pods-Rated.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rated.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rated/Pods-Rated.debug.xcconfig"; sourceTree = "<group>"; };
 		D407C6F01D7D01B60052C9A5 /* Rating+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rating+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D407C6F21D7D03EE0052C9A5 /* Rated v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Rated v2.xcdatamodel"; sourceTree = "<group>"; };
 		D49364F31D80EAA200D37298 /* Rated v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Rated v3.xcdatamodel"; sourceTree = "<group>"; };
@@ -45,17 +49,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F21F573B6EBD1F94C93B293D /* Pods_Rated.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1989B711A1F839AF8B3511C6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				351FFEC6968950CDA4FAB1BE /* Pods_Rated.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D4BDF4E11D7CD0E4003A3C60 = {
 			isa = PBXGroup;
 			children = (
 				D4BDF4EC1D7CD0E4003A3C60 /* Rated */,
 				D4BDF4EB1D7CD0E4003A3C60 /* Products */,
+				F93029CDB9A032E057AD1D8A /* Pods */,
+				1989B711A1F839AF8B3511C6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +118,15 @@
 			name = "Core Data";
 			sourceTree = "<group>";
 		};
+		F93029CDB9A032E057AD1D8A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D26C0D4A570B0036308A69FE /* Pods-Rated.debug.xcconfig */,
+				5F5B67E4218568EA4FD663C8 /* Pods-Rated.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -110,9 +134,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4BDF4FF1D7CD0E4003A3C60 /* Build configuration list for PBXNativeTarget "Rated" */;
 			buildPhases = (
+				8F4938E5F318D3E42B9953E6 /* [CP] Check Pods Manifest.lock */,
 				D4BDF4E61D7CD0E4003A3C60 /* Sources */,
 				D4BDF4E71D7CD0E4003A3C60 /* Frameworks */,
 				D4BDF4E81D7CD0E4003A3C60 /* Resources */,
+				69C75D0E13832F09017DE086 /* [CP] Embed Pods Frameworks */,
+				71AF7EC3E9928E0CA96D3505 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -168,6 +195,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		69C75D0E13832F09017DE086 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rated/Pods-Rated-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		71AF7EC3E9928E0CA96D3505 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rated/Pods-Rated-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F4938E5F318D3E42B9953E6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D4BDF4E61D7CD0E4003A3C60 /* Sources */ = {
@@ -295,6 +370,7 @@
 		};
 		D4BDF5001D7CD0E4003A3C60 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D26C0D4A570B0036308A69FE /* Pods-Rated.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -312,6 +388,7 @@
 		};
 		D4BDF5011D7CD0E4003A3C60 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F5B67E4218568EA4FD663C8 /* Pods-Rated.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
