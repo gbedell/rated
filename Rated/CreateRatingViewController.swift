@@ -32,9 +32,10 @@ class CreateRatingViewController: UIViewController {
     @IBAction func createRating(sender: UIBarButtonItem) {
         if let ratingName = ratingNameTextField.text {
             let ratingScore = ratingSlider.value
-            let newRating = NSEntityDescription.insertNewObjectForEntityForName("Rating", inManagedObjectContext: managedObjectContext!) as! Rating
-            newRating.name = ratingName
-            newRating.score = roundToPlaces(Double(ratingScore), decimalPlaces: 1)
+            if let newRating = NSEntityDescription.insertNewObjectForEntityForName("Rating", inManagedObjectContext: managedObjectContext!) as? Rating {
+                newRating.name = ratingName
+                newRating.score = roundToPlaces(Double(ratingScore), decimalPlaces: 1)
+            }
         }
         
         self.dismissViewControllerAnimated(true, completion: nil)

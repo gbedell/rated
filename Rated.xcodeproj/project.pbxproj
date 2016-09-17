@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D40334EF1D810D5900051DE9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40334EE1D810D5900051DE9 /* LoginViewController.swift */; };
 		D407C6F11D7D01B60052C9A5 /* Rating+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D407C6F01D7D01B60052C9A5 /* Rating+CoreDataProperties.swift */; };
 		D4BDF4EE1D7CD0E4003A3C60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF4ED1D7CD0E4003A3C60 /* AppDelegate.swift */; };
 		D4BDF4F31D7CD0E4003A3C60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4BDF4F11D7CD0E4003A3C60 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		351FFEC6968950CDA4FAB1BE /* Pods_Rated.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rated.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F5B67E4218568EA4FD663C8 /* Pods-Rated.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rated.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rated/Pods-Rated.release.xcconfig"; sourceTree = "<group>"; };
 		D26C0D4A570B0036308A69FE /* Pods-Rated.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rated.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rated/Pods-Rated.debug.xcconfig"; sourceTree = "<group>"; };
+		D40334EE1D810D5900051DE9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D407C6F01D7D01B60052C9A5 /* Rating+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rating+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D407C6F21D7D03EE0052C9A5 /* Rated v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Rated v2.xcdatamodel"; sourceTree = "<group>"; };
 		D49364F31D80EAA200D37298 /* Rated v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Rated v3.xcdatamodel"; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				D4D1DC9C1D7E436800953494 /* RatingViewController.swift */,
 				D4BDF50C1D7CDB2F003A3C60 /* CreateRatingViewController.swift */,
 				D4D1DC9A1D7DB84B00953494 /* RatingTableViewCell.swift */,
+				D40334EE1D810D5900051DE9 /* LoginViewController.swift */,
 				D4BDF4F11D7CD0E4003A3C60 /* Main.storyboard */,
 				D4BDF5091D7CD2A4003A3C60 /* Core Data */,
 				D4BDF5021D7CD1D6003A3C60 /* Supporting Files */,
@@ -257,6 +260,7 @@
 				D407C6F11D7D01B60052C9A5 /* Rating+CoreDataProperties.swift in Sources */,
 				D4D1DC9D1D7E436800953494 /* RatingViewController.swift in Sources */,
 				D4BDF5041D7CD1F1003A3C60 /* RatingsTableViewController.swift in Sources */,
+				D40334EF1D810D5900051DE9 /* LoginViewController.swift in Sources */,
 				D4BDF50D1D7CDB2F003A3C60 /* CreateRatingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
