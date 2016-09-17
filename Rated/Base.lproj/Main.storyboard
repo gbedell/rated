@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="r8z-EX-nLI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="G4d-Tj-qvH">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -19,10 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="r8z-EX-nLI" kind="show" identifier="LoginSuccess" id="Tfw-kd-Pdo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plc-t6-dn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1073" y="-469"/>
+            <point key="canvasLocation" x="-457" y="329"/>
         </scene>
         <!--Rated-->
         <scene sceneID="F0J-lc-hdT">
@@ -79,11 +82,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Rated" id="bV5-Aq-Fq1">
-                        <barButtonItem key="leftBarButtonItem" title="Login" id="o3t-Jk-1qc">
-                            <connections>
-                                <segue destination="G4d-Tj-qvH" kind="presentation" id="9qS-Fh-8fb"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="pcG-yV-Gll">
                             <connections>
                                 <segue destination="c2e-jG-BLo" kind="presentation" identifier="CreateRating" id="h9M-Wb-eFl"/>

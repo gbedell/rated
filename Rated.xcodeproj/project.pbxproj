@@ -91,10 +91,10 @@
 				D4D1DC9C1D7E436800953494 /* RatingViewController.swift */,
 				D4BDF50C1D7CDB2F003A3C60 /* CreateRatingViewController.swift */,
 				D4D1DC9A1D7DB84B00953494 /* RatingTableViewCell.swift */,
+				D40334EE1D810D5900051DE9 /* LoginViewController.swift */,
 				D4BDF4F11D7CD0E4003A3C60 /* Main.storyboard */,
 				D4BDF5091D7CD2A4003A3C60 /* Core Data */,
 				D4BDF5021D7CD1D6003A3C60 /* Supporting Files */,
-				D40334EE1D810D5900051DE9 /* LoginViewController.swift */,
 			);
 			path = Rated;
 			sourceTree = "<group>";

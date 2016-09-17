@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Alamofire
 
 class RatingsTableViewController: CoreDataTableViewController {
         
@@ -15,6 +16,8 @@ class RatingsTableViewController: CoreDataTableViewController {
         (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
         didSet { updateUI() }
     }
+    
+    var userEmail: String?
     
     private struct uiConstants {
         static let CREATE_RATING_SEGUE = "CreateRating"
@@ -56,6 +59,20 @@ class RatingsTableViewController: CoreDataTableViewController {
         newRating.name = "Arizona Green Tea"
         newRating.score = 8.8
         
+        Alamofire.request(.GET, "http://localhost:8080/raters/find-by-fb/" + String(588445801310406))
+            .responseJSON { response in
+                debugPrint(response)
+                
+                print(response.request)
+                print(response.response)
+                print(response.data)
+                print(response.result)
+                
+                if let JSON = response.result.value {
+                    print("JSON: \(JSON)")
+                }
+        }
+        
         updateUI()
     }
     
@@ -80,5 +97,7 @@ class RatingsTableViewController: CoreDataTableViewController {
             }
         }
     }
+    
+    
 
 }
