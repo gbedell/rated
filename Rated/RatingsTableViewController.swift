@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import CoreData
 import Alamofire
+import SwiftyJSON
 
 class RatingsTableViewController: UITableViewController {
     
@@ -21,11 +21,13 @@ class RatingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         // Fetch user's ratings
+        getUserRatings()
     }
         
     private struct uiConstants {
         static let CREATE_RATING_SEGUE = "CreateRating"
         static let VIEW_RATING_SEGUE = "ViewRating"
+        static let GET_USER_RATINGS_URL = "http://localhost:8080/rating/find-by-rater/"
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> RatingTableViewCell {
@@ -35,7 +37,7 @@ class RatingsTableViewController: UITableViewController {
         return cell
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ratings.count
     }
     
@@ -57,6 +59,32 @@ class RatingsTableViewController: UITableViewController {
                 destinationVC.ratingName = ratingName
                 destinationVC.ratingScore = ratingScore
                 
+            }
+        }
+    }
+    
+    private func getUserRatings() {
+        // Call REST API to get User Ratings
+        if let raterId = rater?.raterId {
+            Alamofire.request(.GET, uiConstants.GET_USER_RATINGS_URL + String(raterId))
+                .responseJSON { response in
+                    switch response.result {
+                    case .Success(let data):
+                        print(data)
+                        let json = JSON(data)
+                        if let ratingsArray = json.array {
+                            for r in ratingsArray {
+                                let rating = Rating()
+                                rating.ratingId = r["ratingId"].intValue
+                                rating.name = r["name"].stringValue
+                                rating.score = r["score"].doubleValue
+                                rating.raterId = r["rater"]["userId"].intValue
+                                self.ratings.append(rating)
+                            }
+                        }
+                    case .Failure(let error):
+                        print("Request failed with error: \(error)")
+                    }
             }
         }
     }

@@ -7,10 +7,7 @@
 //
 
 import UIKit
-import CoreData
-import FBSDKCoreKit
 import FBSDKLoginKit
-import FBSDKShareKit
 import Alamofire
 import SwiftyJSON
 
@@ -79,14 +76,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 let json = JSON(result)
                 let fbId = json["id"].intValue
                 self.getUserInfo(fbId)
-                
-                print("fetched user: \(result)")
-                if let userName : NSString = result.valueForKey("name") as? NSString {
-                    print("User Name is: \(userName)")
-                }
-                if let userEmail : NSString = result.valueForKey("email") as? NSString {
-                    print("User Email is: \(userEmail)")
-                }
             }
         })
     }
@@ -98,7 +87,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 destinationVC = navcon.visibleViewController ?? destinationVC
             }
             if let ratingsTableVC = destinationVC as? RatingsTableViewController {
-                print("I am going to set the VC's Rater")
                 ratingsTableVC.rater = self.rater
             }
         }
