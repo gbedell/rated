@@ -27,7 +27,7 @@ class RatingsTableViewController: UITableViewController {
     private struct uiConstants {
         static let CREATE_RATING_SEGUE = "CreateRating"
         static let VIEW_RATING_SEGUE = "ViewRating"
-        static let GET_USER_RATINGS_URL = "http://localhost:8080/rating/find-by-rater/"
+        static let GET_USER_RATINGS_URL = "http://localhost:8080/ratings/find-by-rater/"
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> RatingTableViewCell {

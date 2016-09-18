@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class CreateRatingViewController: UIViewController {
     
@@ -30,12 +32,34 @@ class CreateRatingViewController: UIViewController {
     
     @IBAction func createRating(sender: UIBarButtonItem) {
         // Call REST API for Creating Rating
-        if let raterId = self.rater?.raterId {
-            let newRating = RatingRestForm()
-            newRating.name = ratingNameTextField.text
-            newRating.score = roundToPlaces(Double(ratingSlider.value), decimalPlaces: 1)
-            newRating.rater?.raterId = raterId
-            // Call REST API
+        if let existingRater = self.rater {
+            if let ratingName = ratingNameTextField.text {
+                let ratingScore = roundToPlaces(Double(ratingSlider.value), decimalPlaces: 1)
+                let raterId = existingRater.raterId
+                let facebookId = existingRater.facebookId
+                let raterParams: [String: AnyObject] = [
+                    "userId": raterId!,
+                    "facebookId": facebookId!
+                ]
+                let params: [String: AnyObject] = [
+                    "name"  : ratingName,
+                    "score" : ratingScore,
+                    "rater" : raterParams
+                ]
+                print("Parameters: \(params)")
+                // Call Rest API
+                Alamofire.request(.POST, uiConstants.CREATE_RATING_URL, parameters: params, encoding: .JSON, headers: nil)
+                    .responseJSON { response in
+                        switch response.result {
+                        case .Success(let data):
+                            print(data)
+                            let json = JSON(data)
+                            print(json)
+                        case .Failure(let error):
+                            print("Request failed with error: \(error)")
+                        }
+                }
+            }
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -55,6 +79,10 @@ class CreateRatingViewController: UIViewController {
     private func roundToPlaces(value: Double, decimalPlaces: Int) -> Double {
         let divisor = pow(10.0, Double(decimalPlaces))
         return round(value * divisor) / divisor
+    }
+    
+    private struct uiConstants {
+        static let CREATE_RATING_URL = "http://localhost:8080/ratings"
     }
     
     
