@@ -11,7 +11,7 @@ import CoreData
 
 class CreateRatingViewController: UIViewController {
     
-    var managedObjectContext: NSManagedObjectContext?
+    var rater: Rater?
     
     // Mark: Outlets
     @IBOutlet weak var ratingNameTextField: UITextField!
@@ -30,14 +30,14 @@ class CreateRatingViewController: UIViewController {
     }
     
     @IBAction func createRating(sender: UIBarButtonItem) {
-        if let ratingName = ratingNameTextField.text {
-            let ratingScore = ratingSlider.value
-            if let newRating = NSEntityDescription.insertNewObjectForEntityForName("Rating", inManagedObjectContext: managedObjectContext!) as? Rating {
-                newRating.name = ratingName
-                newRating.score = roundToPlaces(Double(ratingScore), decimalPlaces: 1)
-            }
+        // Call REST API for Creating Rating
+        if let raterId = self.rater?.raterId {
+            let newRating = RatingRestForm()
+            newRating.name = ratingNameTextField.text
+            newRating.score = roundToPlaces(Double(ratingSlider.value), decimalPlaces: 1)
+            newRating.rater?.raterId = raterId
+            // Call REST API
         }
-        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

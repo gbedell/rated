@@ -11,12 +11,14 @@ import CoreData
 import FBSDKCoreKit
 import FBSDKLoginKit
 import FBSDKShareKit
+import Alamofire
+import SwiftyJSON
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     // Mark - Model
-    var managedObjectContext: NSManagedObjectContext? = (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext
-
+    var rater: Rater? 
+    
     // Mark - View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +37,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func viewDidAppear(animated: Bool) {
         if(FBSDKAccessToken.currentAccessToken() != nil) {
-            print(returnUserData())
-            self.performSegueWithIdentifier(loginViewConstants.LOGIN_SUCCESS_SEGUE, sender: self)
+            returnUserData()
         }
     }
     
@@ -51,7 +52,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             print("Hey, the login has been cancelled")
         }
         else {
-            //Create new user here?
             if result.grantedPermissions.contains("email") {
                 print("I guess this permission was granted?")
             }
@@ -65,20 +65,21 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     // Mark - Private Methods
     private struct loginViewConstants {
         static let LOGIN_SUCCESS_SEGUE = "LoginSuccess"
+        static let GET_USER_INFO_URL = "http://localhost:8080/raters/find-by-fb/"
     }
     
-    private func returnUserData()
-    {
+    private func returnUserData() {
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             
-            if ((error) != nil)
-            {
+            if ((error) != nil) {
                 // Process error
                 print("Error: \(error)")
-            }
-            else
-            {
+            } else {
+                let json = JSON(result)
+                let fbId = json["id"].intValue
+                self.getUserInfo(fbId)
+                
                 print("fetched user: \(result)")
                 if let userName : NSString = result.valueForKey("name") as? NSString {
                     print("User Name is: \(userName)")
@@ -92,10 +93,46 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == loginViewConstants.LOGIN_SUCCESS_SEGUE {
-            
-            // Pass user information to the rating table view controller
-            
+            var destinationVC = segue.destinationViewController
+            if let navcon = destinationVC as? UINavigationController {
+                destinationVC = navcon.visibleViewController ?? destinationVC
+            }
+            if let ratingsTableVC = destinationVC as? RatingsTableViewController {
+                print("I am going to set the VC's Rater")
+                ratingsTableVC.rater = self.rater
+            }
         }
+    }
+    
+    private func getUserInfo(facebookId: Int) {
+        Alamofire.request(.GET, loginViewConstants.GET_USER_INFO_URL + String(facebookId))
+            .responseJSON { response in
+                switch response.result {
+                case .Success(let data):
+                    print(data)
+                    let json = JSON(data)
+                    let username = json["username"].stringValue
+                    let email = json["email"].stringValue
+                    let userId = json["userId"].intValue
+                    let facebookId = json["facebookId"].intValue
+                    
+                    let user = Rater()
+                    
+                    user.username = username
+                    user.email = email
+                    user.raterId = userId
+                    user.facebookId = facebookId
+                    
+                    self.rater = user
+                    
+                    self.performSegueWithIdentifier(loginViewConstants.LOGIN_SUCCESS_SEGUE, sender: self)
+                    
+                case .Failure(let error):
+                    print("Request failed with error: \(error)")
+                }
+                
+            }
+        
     }
     
 }

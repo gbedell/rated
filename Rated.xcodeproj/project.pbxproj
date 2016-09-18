@@ -8,15 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		D40334EF1D810D5900051DE9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40334EE1D810D5900051DE9 /* LoginViewController.swift */; };
-		D407C6F11D7D01B60052C9A5 /* Rating+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D407C6F01D7D01B60052C9A5 /* Rating+CoreDataProperties.swift */; };
+		D410C4F21D8DD80B00A15EED /* Rater.swift in Sources */ = {isa = PBXBuildFile; fileRef = D410C4F11D8DD80B00A15EED /* Rater.swift */; };
+		D462F7881D8E4662006CBCF9 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462F7871D8E4662006CBCF9 /* Rating.swift */; };
+		D462F78A1D8E4EB9006CBCF9 /* RatingRestForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462F7891D8E4EB9006CBCF9 /* RatingRestForm.swift */; };
 		D4BDF4EE1D7CD0E4003A3C60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF4ED1D7CD0E4003A3C60 /* AppDelegate.swift */; };
 		D4BDF4F31D7CD0E4003A3C60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4BDF4F11D7CD0E4003A3C60 /* Main.storyboard */; };
-		D4BDF4F61D7CD0E4003A3C60 /* Rated.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF4F41D7CD0E4003A3C60 /* Rated.xcdatamodeld */; };
 		D4BDF4F81D7CD0E4003A3C60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4BDF4F71D7CD0E4003A3C60 /* Assets.xcassets */; };
 		D4BDF4FB1D7CD0E4003A3C60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4BDF4F91D7CD0E4003A3C60 /* LaunchScreen.storyboard */; };
 		D4BDF5041D7CD1F1003A3C60 /* RatingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF5031D7CD1F1003A3C60 /* RatingsTableViewController.swift */; };
-		D4BDF5081D7CD294003A3C60 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF5061D7CD294003A3C60 /* Rating.swift */; };
-		D4BDF50B1D7CD78D003A3C60 /* CoreDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF50A1D7CD78D003A3C60 /* CoreDataTableViewController.swift */; };
 		D4BDF50D1D7CDB2F003A3C60 /* CreateRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF50C1D7CDB2F003A3C60 /* CreateRatingViewController.swift */; };
 		D4D1DC9B1D7DB84B00953494 /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1DC9A1D7DB84B00953494 /* RatingTableViewCell.swift */; };
 		D4D1DC9D1D7E436800953494 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1DC9C1D7E436800953494 /* RatingViewController.swift */; };
@@ -28,19 +27,16 @@
 		5F5B67E4218568EA4FD663C8 /* Pods-Rated.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rated.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rated/Pods-Rated.release.xcconfig"; sourceTree = "<group>"; };
 		D26C0D4A570B0036308A69FE /* Pods-Rated.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rated.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rated/Pods-Rated.debug.xcconfig"; sourceTree = "<group>"; };
 		D40334EE1D810D5900051DE9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		D407C6F01D7D01B60052C9A5 /* Rating+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Rating+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		D407C6F21D7D03EE0052C9A5 /* Rated v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Rated v2.xcdatamodel"; sourceTree = "<group>"; };
-		D49364F31D80EAA200D37298 /* Rated v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Rated v3.xcdatamodel"; sourceTree = "<group>"; };
+		D410C4F11D8DD80B00A15EED /* Rater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rater.swift; sourceTree = "<group>"; };
+		D462F7871D8E4662006CBCF9 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		D462F7891D8E4EB9006CBCF9 /* RatingRestForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingRestForm.swift; sourceTree = "<group>"; };
 		D4BDF4EA1D7CD0E4003A3C60 /* Rated.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rated.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4BDF4ED1D7CD0E4003A3C60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4BDF4F21D7CD0E4003A3C60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D4BDF4F51D7CD0E4003A3C60 /* Rated.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Rated.xcdatamodel; sourceTree = "<group>"; };
 		D4BDF4F71D7CD0E4003A3C60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4BDF4FA1D7CD0E4003A3C60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4BDF4FC1D7CD0E4003A3C60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4BDF5031D7CD1F1003A3C60 /* RatingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingsTableViewController.swift; sourceTree = "<group>"; };
-		D4BDF5061D7CD294003A3C60 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
-		D4BDF50A1D7CD78D003A3C60 /* CoreDataTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTableViewController.swift; sourceTree = "<group>"; };
 		D4BDF50C1D7CDB2F003A3C60 /* CreateRatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRatingViewController.swift; sourceTree = "<group>"; };
 		D4D1DC9A1D7DB84B00953494 /* RatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
 		D4D1DC9C1D7E436800953494 /* RatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +60,16 @@
 				351FFEC6968950CDA4FAB1BE /* Pods_Rated.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D410C4F01D8DD7DE00A15EED /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				D410C4F11D8DD80B00A15EED /* Rater.swift */,
+				D462F7871D8E4662006CBCF9 /* Rating.swift */,
+				D462F7891D8E4EB9006CBCF9 /* RatingRestForm.swift */,
+			);
+			name = Objects;
 			sourceTree = "<group>";
 		};
 		D4BDF4E11D7CD0E4003A3C60 = {
@@ -93,7 +99,7 @@
 				D4D1DC9A1D7DB84B00953494 /* RatingTableViewCell.swift */,
 				D40334EE1D810D5900051DE9 /* LoginViewController.swift */,
 				D4BDF4F11D7CD0E4003A3C60 /* Main.storyboard */,
-				D4BDF5091D7CD2A4003A3C60 /* Core Data */,
+				D410C4F01D8DD7DE00A15EED /* Objects */,
 				D4BDF5021D7CD1D6003A3C60 /* Supporting Files */,
 			);
 			path = Rated;
@@ -108,17 +114,6 @@
 				D4BDF4FC1D7CD0E4003A3C60 /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		D4BDF5091D7CD2A4003A3C60 /* Core Data */ = {
-			isa = PBXGroup;
-			children = (
-				D407C6F01D7D01B60052C9A5 /* Rating+CoreDataProperties.swift */,
-				D4BDF50A1D7CD78D003A3C60 /* CoreDataTableViewController.swift */,
-				D4BDF5061D7CD294003A3C60 /* Rating.swift */,
-				D4BDF4F41D7CD0E4003A3C60 /* Rated.xcdatamodeld */,
-			);
-			name = "Core Data";
 			sourceTree = "<group>";
 		};
 		F93029CDB9A032E057AD1D8A /* Pods */ = {
@@ -252,14 +247,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4BDF4F61D7CD0E4003A3C60 /* Rated.xcdatamodeld in Sources */,
 				D4BDF4EE1D7CD0E4003A3C60 /* AppDelegate.swift in Sources */,
-				D4BDF50B1D7CD78D003A3C60 /* CoreDataTableViewController.swift in Sources */,
-				D4BDF5081D7CD294003A3C60 /* Rating.swift in Sources */,
 				D4D1DC9B1D7DB84B00953494 /* RatingTableViewCell.swift in Sources */,
-				D407C6F11D7D01B60052C9A5 /* Rating+CoreDataProperties.swift in Sources */,
 				D4D1DC9D1D7E436800953494 /* RatingViewController.swift in Sources */,
 				D4BDF5041D7CD1F1003A3C60 /* RatingsTableViewController.swift in Sources */,
+				D462F78A1D8E4EB9006CBCF9 /* RatingRestForm.swift in Sources */,
+				D410C4F21D8DD80B00A15EED /* Rater.swift in Sources */,
+				D462F7881D8E4662006CBCF9 /* Rating.swift in Sources */,
 				D40334EF1D810D5900051DE9 /* LoginViewController.swift in Sources */,
 				D4BDF50D1D7CDB2F003A3C60 /* CreateRatingViewController.swift in Sources */,
 			);
@@ -429,21 +423,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		D4BDF4F41D7CD0E4003A3C60 /* Rated.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D49364F31D80EAA200D37298 /* Rated v3.xcdatamodel */,
-				D407C6F21D7D03EE0052C9A5 /* Rated v2.xcdatamodel */,
-				D4BDF4F51D7CD0E4003A3C60 /* Rated.xcdatamodel */,
-			);
-			currentVersion = D49364F31D80EAA200D37298 /* Rated v3.xcdatamodel */;
-			path = Rated.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = D4BDF4E21D7CD0E4003A3C60 /* Project object */;
 }

@@ -10,70 +10,33 @@ import UIKit
 import CoreData
 import Alamofire
 
-class RatingsTableViewController: CoreDataTableViewController {
-        
-    var managedObjectContext: NSManagedObjectContext? =
-        (UIApplication.sharedApplication().delegate as? AppDelegate)?.managedObjectContext {
-        didSet { updateUI() }
+class RatingsTableViewController: UITableViewController {
+    
+    // Mark - Model
+    var rater: Rater?
+    
+    var ratings = Array<Rating>() {
+        didSet { tableView.reloadData() }
     }
     
-    var userEmail: String?
-    
+    override func viewDidLoad() {
+        // Fetch user's ratings
+    }
+        
     private struct uiConstants {
         static let CREATE_RATING_SEGUE = "CreateRating"
         static let VIEW_RATING_SEGUE = "ViewRating"
     }
     
-    func updateUI() {
-        if let context = managedObjectContext {
-            let request = NSFetchRequest(entityName: "Rating")
-            request.sortDescriptors = [NSSortDescriptor(key: "score", ascending: true)]
-            fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        } else {
-            fetchedResultsController = nil
-        }
-    }
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> RatingTableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("RatingCell", forIndexPath: indexPath) as! RatingTableViewCell
-        
-        if let rating = fetchedResultsController?.objectAtIndexPath(indexPath) as? Rating {
-            var ratingName: String?
-            var ratingScore: NSNumber?
-            rating.managedObjectContext?.performBlockAndWait {
-                ratingName = rating.name
-                ratingScore = rating.score
-            }
-            cell.ratingName.text = ratingName
-            print(ratingScore!)
-            cell.ratingScore.text = String(ratingScore!)
-        }
+        let rating = self.ratings[indexPath.row]
+        cell.rating = rating
         return cell
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Test Rating
-        let newRating = NSEntityDescription.insertNewObjectForEntityForName("Rating", inManagedObjectContext: managedObjectContext!) as! Rating
-        newRating.name = "Arizona Green Tea"
-        newRating.score = 8.8
-        
-        Alamofire.request(.GET, "http://localhost:8080/raters/find-by-fb/" + String(588445801310406))
-            .responseJSON { response in
-                debugPrint(response)
-                
-                print(response.request)
-                print(response.response)
-                print(response.data)
-                print(response.result)
-                
-                if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
-                }
-        }
-        
-        updateUI()
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return ratings.count
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -83,7 +46,7 @@ class RatingsTableViewController: CoreDataTableViewController {
                 destinationVC = navcon.visibleViewController ?? destinationVC
             }
             if let createRatingVC = destinationVC as? CreateRatingViewController {
-                createRatingVC.managedObjectContext = self.managedObjectContext
+                createRatingVC.rater = self.rater
             }
         } else if segue.identifier == uiConstants.VIEW_RATING_SEGUE {
             if let destinationVC = segue.destinationViewController as? RatingViewController {

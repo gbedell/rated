@@ -1,5 +1,5 @@
 //
-//  Rating.swift
+//  RatingRestForm.swift
 //  Rated
 //
 //  Created by Gavin Bedell on 9/17/16.
@@ -8,12 +8,11 @@
 
 import Foundation
 
-public class Rating {
+public class RatingRestForm {
     
     var ratingId: Int?
     var name: String?
     var score: Double?
-    var dateCreted: NSDate?
-    var raterId: Int?
+    var rater: Rater?
     
 }
