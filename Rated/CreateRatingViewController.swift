@@ -9,6 +9,26 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class CreateRatingViewController: UIViewController {
     
@@ -22,15 +42,15 @@ class CreateRatingViewController: UIViewController {
 
     
     // Mark: Actions
-    @IBAction func ratingScoreChange(sender: UISlider) {
+    @IBAction func ratingScoreChange(_ sender: UISlider) {
         ratingScoreLabel.text = String(format: "%.1f", sender.value)
     }
     
-    @IBAction func dismissModal(sender: UIBarButtonItem) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func dismissModal(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func createRating(sender: UIBarButtonItem) {
+    @IBAction func createRating(_ sender: UIBarButtonItem) {
         // Call REST API for Creating Rating
         if let existingRater = self.rater {
             if let ratingName = ratingNameTextField.text {
@@ -38,50 +58,50 @@ class CreateRatingViewController: UIViewController {
                 let raterId = existingRater.raterId
                 let facebookId = existingRater.facebookId
                 let raterParams: [String: AnyObject] = [
-                    "userId": raterId!,
-                    "facebookId": facebookId!
+                    "userId": raterId! as AnyObject,
+                    "facebookId": facebookId! as AnyObject
                 ]
                 let params: [String: AnyObject] = [
-                    "name"  : ratingName,
-                    "score" : ratingScore,
-                    "rater" : raterParams
+                    "name"  : ratingName as AnyObject,
+                    "score" : ratingScore as AnyObject,
+                    "rater" : raterParams as AnyObject
                 ]
                 print("Parameters: \(params)")
                 // Call Rest API
-                Alamofire.request(.POST, uiConstants.CREATE_RATING_URL, parameters: params, encoding: .JSON, headers: nil)
+                Alamofire.request(.POST, uiConstants.CREATE_RATING_URL, parameters: params, encoding: .json, headers: nil)
                     .responseJSON { response in
                         switch response.result {
-                        case .Success(let data):
+                        case .success(let data):
                             print(data)
                             let json = JSON(data)
                             print(json)
-                        case .Failure(let error):
+                        case .failure(let error):
                             print("Request failed with error: \(error)")
                         }
                 }
             }
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
-        createRatingButton.enabled = false
+        createRatingButton.isEnabled = false
     }
     
-    @IBAction func checkEnableCreateButton(sender: UITextField) {
+    @IBAction func checkEnableCreateButton(_ sender: UITextField) {
         if sender.text?.characters.count > 0 {
-            createRatingButton.enabled = true
+            createRatingButton.isEnabled = true
         } else {
-            createRatingButton.enabled = false
+            createRatingButton.isEnabled = false
         }
     }
     
-    private func roundToPlaces(value: Double, decimalPlaces: Int) -> Double {
+    fileprivate func roundToPlaces(_ value: Double, decimalPlaces: Int) -> Double {
         let divisor = pow(10.0, Double(decimalPlaces))
         return round(value * divisor) / divisor
     }
     
-    private struct uiConstants {
+    fileprivate struct uiConstants {
         static let CREATE_RATING_URL = "http://localhost:8080/ratings"
     }
     

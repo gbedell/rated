@@ -8,12 +8,12 @@
 
 import Foundation
 
-public class Rater {
+open class Rater {
     
     var raterId: Int?
     var username: String?
     var email: String?
-    var dateCreated: NSDate?
+    var dateCreated: Date?
     var facebookId: Int?
     
 }

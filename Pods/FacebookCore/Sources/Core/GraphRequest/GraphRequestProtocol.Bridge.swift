@@ -32,6 +32,6 @@ extension GraphRequestProtocol {
                              parameters: sdkParameters,
                              tokenString: accessToken?.authenticationToken,
                              version: apiVersion,
-                             HTTPMethod: httpMethod.rawValue)
+                             httpMethod: httpMethod.rawValue)
   }
 }

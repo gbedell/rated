@@ -20,7 +20,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if (FBSDKAccessToken.currentAccessToken() != nil) {
+        if (FBSDKAccessToken.current() != nil) {
             print("Access token wasnt nil")
         } else {
             let loginButton: FBSDKLoginButton = FBSDKLoginButton()
@@ -32,14 +32,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
-        if(FBSDKAccessToken.currentAccessToken() != nil) {
+    override func viewDidAppear(_ animated: Bool) {
+        if(FBSDKAccessToken.current() != nil) {
             returnUserData()
         }
     }
     
     // Mark - FBSDKLoginButtonDelegate Methods
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         print("User logged in")
         
         if((error) != nil) {
@@ -55,19 +55,19 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User logged out")
     }
     
     // Mark - Private Methods
-    private struct loginViewConstants {
+    fileprivate struct loginViewConstants {
         static let LOGIN_SUCCESS_SEGUE = "LoginSuccess"
         static let GET_USER_INFO_URL = "http://localhost:8080/raters/find-by-fb/"
     }
     
-    private func returnUserData() {
+    fileprivate func returnUserData() {
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+        graphRequest.start(completionHandler: { (connection, result, error) -> Void in
             
             if ((error) != nil) {
                 // Process error
@@ -80,9 +80,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         })
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == loginViewConstants.LOGIN_SUCCESS_SEGUE {
-            var destinationVC = segue.destinationViewController
+            var destinationVC = segue.destination
             if let navcon = destinationVC as? UINavigationController {
                 destinationVC = navcon.visibleViewController ?? destinationVC
             }
@@ -92,11 +92,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
-    private func getUserInfo(facebookId: Int) {
+    fileprivate func getUserInfo(_ facebookId: Int) {
         Alamofire.request(.GET, loginViewConstants.GET_USER_INFO_URL + String(facebookId))
             .responseJSON { response in
                 switch response.result {
-                case .Success(let data):
+                case .success(let data):
                     print(data)
                     let json = JSON(data)
                     let username = json["username"].stringValue
@@ -113,9 +113,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                     
                     self.rater = user
                     
-                    self.performSegueWithIdentifier(loginViewConstants.LOGIN_SUCCESS_SEGUE, sender: self)
+                    self.performSegue(withIdentifier: loginViewConstants.LOGIN_SUCCESS_SEGUE, sender: self)
                     
-                case .Failure(let error):
+                case .failure(let error):
                     print("Request failed with error: \(error)")
                 }
                 

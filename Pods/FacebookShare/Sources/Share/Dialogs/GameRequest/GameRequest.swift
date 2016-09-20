@@ -80,7 +80,7 @@ public struct GameRequest: Equatable {
 extension GameRequest {
   internal var sdkContentRepresentation: FBSDKGameRequestContent {
     let sdkContent = FBSDKGameRequestContent()
-    (sdkContent.actionType, sdkContent.objectID) = actionType?.sdkActionRepresentation ?? (.None, nil)
+    (sdkContent.actionType, sdkContent.objectID) = actionType?.sdkActionRepresentation ?? (.none, nil)
     sdkContent.data = data
     sdkContent.filters = recipientsFilter.sdkFilterRepresentation
     sdkContent.title = title
@@ -114,9 +114,9 @@ public func == (lhs: GameRequest, rhs: GameRequest) -> Bool {
  */
 public func == (lhs: GameRequest.Recipient, rhs: GameRequest.Recipient) -> Bool {
   switch (lhs, rhs) {
-  case (.UserId(let lhs), .UserId(let rhs)): return lhs == rhs
-  case (.Username(let lhs), .Username(let rhs)): return lhs == rhs
-  case (.InviteToken(let lhs), .InviteToken(let rhs)): return lhs == rhs
+  case (.userId(let lhs), .userId(let rhs)): return lhs == rhs
+  case (.username(let lhs), .username(let rhs)): return lhs == rhs
+  case (.inviteToken(let lhs), .inviteToken(let rhs)): return lhs == rhs
   default: return false
   }
 }

@@ -52,10 +52,10 @@ public struct UserProfile {
   public let fullName: String?
 
   /// A URL to the user's profile.
-  public let profileURL: NSURL?
+  public let profileURL: URL?
 
   /// The last time the profile was refreshed.
-  public let refreshDate: NSDate
+  public let refreshDate: Date
 
   /**
    Creates a new instance of `Profile`.
@@ -73,8 +73,8 @@ public struct UserProfile {
               middleName: String? = nil,
               lastName: String? = nil,
               fullName: String? = nil,
-              profileURL: NSURL? = nil,
-              refreshDate: NSDate = NSDate()) {
+              profileURL: URL? = nil,
+              refreshDate: Date = Date()) {
     self.userId = userId
     self.firstName = firstName
     self.middleName = middleName
@@ -95,11 +95,11 @@ extension UserProfile {
    */
   public static var current: UserProfile? {
     get {
-      let sdkProfile = FBSDKProfile.currentProfile() as FBSDKProfile?
+      let sdkProfile = FBSDKProfile.current() as FBSDKProfile?
       return sdkProfile.map(UserProfile.init)
     }
     set {
-      FBSDKProfile.setCurrentProfile(newValue?.sdkProfileRepresentation)
+      FBSDKProfile.setCurrent(newValue?.sdkProfileRepresentation)
     }
   }
 
@@ -111,13 +111,13 @@ extension UserProfile {
 
    - parameter completion: The closure to be executed once the profile is loaded.
    */
-  public static func loadCurrent(completion: ((UserProfile?, ErrorType?) -> Void)?) {
-    FBSDKProfile.loadCurrentProfileWithCompletion { (profile: FBSDKProfile?, error: NSError?) in
+  public static func loadCurrent(_ completion: ((UserProfile?, Error?) -> Void)?) {
+    FBSDKProfile.loadCurrentProfile { (profile: FBSDKProfile?, error: NSError?) in
       completion?(profile.map(UserProfile.init), error)
     }
   }
 
-  private static var _updatesOnAccessTokenChange: Bool = false
+  fileprivate static var _updatesOnAccessTokenChange: Bool = false
   /**
    Allows controlling whether `current` profile should automatically update when `AccessToken.current` changes.
 
@@ -130,7 +130,7 @@ extension UserProfile {
     }
     set {
       _updatesOnAccessTokenChange = newValue
-      FBSDKProfile.enableUpdatesOnAccessTokenChange(newValue)
+      FBSDKProfile.enableUpdates(onAccessTokenChange: newValue)
     }
   }
 }
@@ -145,14 +145,14 @@ extension UserProfile {
    */
   public enum PictureAspectRatio {
     /// A square cropped version of the profile picture.
-    case Square
+    case square
     /// The original picture's aspect ratio.
-    case Normal
+    case normal
 
     internal var sdkPictureMode: FBSDKProfilePictureMode {
       switch self {
-      case Square: return .Square
-      case Normal: return .Normal
+      case .square: return .square
+      case .normal: return .normal
       }
     }
   }
@@ -163,8 +163,8 @@ extension UserProfile {
    - parameter aspectRatio: Apsect ratio of the source image to use.
    - parameter size:        Requested height and width of the image. Will be rounded to integer precision.
    */
-  public func imageURLWith(aspectRatio: PictureAspectRatio, size: CGSize) -> NSURL {
-    return sdkProfileRepresentation.imageURLForPictureMode(aspectRatio.sdkPictureMode, size: size)
+  public func imageURLWith(_ aspectRatio: PictureAspectRatio, size: CGSize) -> URL {
+    return sdkProfileRepresentation.imageURL(for: aspectRatio.sdkPictureMode, size: size)
   }
 }
 

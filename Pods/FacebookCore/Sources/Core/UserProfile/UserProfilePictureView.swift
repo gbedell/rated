@@ -22,19 +22,19 @@ import UIKit
 import FBSDKCoreKit.FBSDKProfilePictureView
 
 /// A view to display a profile picture.
-public class UserProfilePictureView: UIView {
+open class UserProfilePictureView: UIView {
 
-  private let sdkProfilePictureView = FBSDKProfilePictureView(frame: .zero)
+  fileprivate let sdkProfilePictureView = FBSDKProfilePictureView(frame: .zero)
 
   /// The aspect ratio of the source image of the profile picture.
-  public var pictureAspectRatio = UserProfile.PictureAspectRatio.Square {
+  open var pictureAspectRatio = UserProfile.PictureAspectRatio.square {
     didSet {
       sdkProfilePictureView.pictureMode = pictureAspectRatio.sdkPictureMode
     }
   }
 
   /// The user id to show the picture for.
-  public var userId = "me" {
+  open var userId = "me" {
     didSet {
       sdkProfilePictureView.profileID = userId
     }
@@ -71,15 +71,15 @@ public class UserProfilePictureView: UIView {
    This method is called whenever any properties that affect the source image are modified,
    but this can also be used to trigger a manual update of the image if it needs to be re-downloaded.
    */
-  public func setNeedsImageUpdate() {
+  open func setNeedsImageUpdate() {
     sdkProfilePictureView.setNeedsImageUpdate()
   }
 }
 
 extension UserProfilePictureView {
-  private func setupSDKProfilePictureView() {
+  fileprivate func setupSDKProfilePictureView() {
     sdkProfilePictureView.frame = bounds
-    sdkProfilePictureView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+    sdkProfilePictureView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     addSubview(sdkProfilePictureView)
     setNeedsImageUpdate() // Trigger the update to refresh the image, just in case.
   }

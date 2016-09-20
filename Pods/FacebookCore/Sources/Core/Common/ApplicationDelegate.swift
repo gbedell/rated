@@ -28,12 +28,12 @@ import FBSDKCoreKit
  should call them in the respective methods in your AppDelegate implementation.
  */
 public final class ApplicationDelegate {
-  private let delegate: FBSDKApplicationDelegate = FBSDKApplicationDelegate.sharedInstance()
+  fileprivate let delegate: FBSDKApplicationDelegate = FBSDKApplicationDelegate.sharedInstance()
 
   /// Returns the singleton instance of an application delegate.
   public static let shared = ApplicationDelegate()
 
-  private init() { }
+  fileprivate init() { }
 }
 
 extension ApplicationDelegate {
@@ -46,7 +46,7 @@ extension ApplicationDelegate {
 
    - returns: `true` if the url contained in the `launchOptions` was intended for the Facebook SDK, otherwise - `false`.
    */
-  public func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+  public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [AnyHashable: Any]?) -> Bool {
     return delegate.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 
@@ -62,7 +62,7 @@ extension ApplicationDelegate {
 
    - returns: `true` if the url was intended for the Facebook SDK, otherwise - `false`.
    */
-  public func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-    return delegate.application(application, openURL:url, sourceApplication:sourceApplication, annotation:annotation)
+  public func application(_ application: UIApplication, openURL url: URL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+    return delegate.application(application, open:url, sourceApplication:sourceApplication, annotation:annotation)
   }
 }

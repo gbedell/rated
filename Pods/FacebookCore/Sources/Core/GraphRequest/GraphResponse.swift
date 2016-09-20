@@ -22,7 +22,7 @@ import Foundation
  Represents a generic response that was received when `GraphRequest` succeeded.
  */
 public struct GraphResponse: GraphResponseProtocol {
-  private let rawResponse: AnyObject?
+  fileprivate let rawResponse: AnyObject?
 
   /**
    Initializes a `GraphResponse`.

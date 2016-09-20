@@ -16,14 +16,14 @@ class RatingTableViewCell: UITableViewCell {
     
     @IBOutlet weak var ratingName: UILabel!
     
-    private func updateUI() {
+    fileprivate func updateUI() {
         // Reset any UI information
         self.ratingName.text = nil
         self.ratingScore.text = nil
         
         // Load new information, if any
         if let rating = self.rating {
-            if let ratingName = rating.name, ratingScore = rating.score {
+            if let ratingName = rating.name, let ratingScore = rating.score {
                 self.ratingName.text = ratingName
                 self.ratingScore.text = String(ratingScore)
             }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class RatingRestForm {
+open class RatingRestForm {
     
     var ratingId: Int?
     var name: String?

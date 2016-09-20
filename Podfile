@@ -8,7 +8,7 @@ target 'Rated' do
   pod 'FacebookLogin'
   pod 'FacebookShare'
   pod 'SwiftyJSON'
-  pod 'Alamofire', '~> 3.0'
+  pod 'Alamofire', '~> 4.0'
 
   # Pods for Rated
 

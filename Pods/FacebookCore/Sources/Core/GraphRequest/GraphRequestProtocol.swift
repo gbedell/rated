@@ -57,7 +57,7 @@ extension GraphRequestProtocol {
 
    - parameter completion: Optional completion closure that is going to be called when the connection finishes or fails.
    */
-  public func start(completion: ((httpResponse: NSHTTPURLResponse?, result: GraphRequestResult<Self>) -> Void)? = nil) {
+  public func start(_ completion: ((_ httpResponse: HTTPURLResponse?, _ result: GraphRequestResult<Self>) -> Void)? = nil) {
     let connection = GraphRequestConnection()
     connection.add(self, completion: completion)
     connection.start()
