@@ -159,7 +159,7 @@ extension LikeControl {
 
    - returns: A size indicating the natural size for the receiving view based on its intrinsic properties.
    */
-  open override var intrinsicContentSize : CGSize {
+  open override var intrinsicContentSize: CGSize {
     return sdkLikeControl.intrinsicContentSize
   }
 }

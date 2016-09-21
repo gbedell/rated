@@ -80,7 +80,9 @@ public struct GameRequest: Equatable {
 extension GameRequest {
   internal var sdkContentRepresentation: FBSDKGameRequestContent {
     let sdkContent = FBSDKGameRequestContent()
-    (sdkContent.actionType, sdkContent.objectID) = actionType?.sdkActionRepresentation ?? (.none, nil)
+    let actionRepresentation = actionType?.sdkActionRepresentation
+    sdkContent.actionType = actionRepresentation?.0 ?? .none
+    sdkContent.objectID = actionRepresentation?.1
     sdkContent.data = data
     sdkContent.filters = recipientsFilter.sdkFilterRepresentation
     sdkContent.title = title

@@ -1,4 +1,4 @@
-// Copyright (c) 2014-present, Facebook, Inc. All rights reserved.
+// Copyright (c) 2016-present, Facebook, Inc. All rights reserved.
 //
 // You are hereby granted a non-exclusive, worldwide, royalty-free license to use,
 // copy, modify, and distribute this software in source code or binary form for use
@@ -16,10 +16,32 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+import FBSDKCoreKit
 
-#import <FBSDKCoreKit/FBSDKAppLinkUtility.h>
+extension UserProfile {
+  /**
+   Describes the result of a fetch of `UserProfile`.
+   */
+  public enum FetchResult {
+    /// Profile was succesfully fetched.
+    case success(UserProfile)
+    /// Profile fetch failed.
+    case failed(Error)
+  }
+}
 
-@interface FBSDKOrganicDeeplinkHelper: NSObject
-- (bool)fetchOrganicDeeplink:(FBSDKDeferredAppInviteHandler)handler;
-@end
+extension UserProfile.FetchResult {
+
+  internal init(sdkProfile: FBSDKProfile?, error: NSError?) {
+    if let error = error {
+      self = .failed(error)
+    } else if let sdkProfile = sdkProfile {
+      let profile = UserProfile(sdkProfile: sdkProfile)
+      self = .success(profile)
+    } else {
+      //FIXME: (nlutsenko) Use a good error type here.
+      let error = NSError(domain: "", code: 42, userInfo: nil)
+      self = .failed(error)
+    }
+  }
+}

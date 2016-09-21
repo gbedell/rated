@@ -42,7 +42,7 @@ extension GraphRequestConnectionDelegateBridge: FBSDKGraphRequestConnectionDeleg
     }
   }
 
-  func requestConnection(_ connection: FBSDKGraphRequestConnection!, didFailWithError error: NSError!) {
+  func requestConnection(_ connection: FBSDKGraphRequestConnection!, didFailWithError error: Error!) {
     if let handler = networkFailureHandler {
       handler(error)
     }

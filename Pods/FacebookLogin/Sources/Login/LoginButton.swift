@@ -141,7 +141,7 @@ extension LoginButton {
     return sdkLoginButton.sizeThatFits(size)
   }
 
-  open override var intrinsicContentSize : CGSize {
+  open override var intrinsicContentSize: CGSize {
     return sdkLoginButton.intrinsicContentSize
   }
 }

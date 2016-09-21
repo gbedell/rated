@@ -105,7 +105,7 @@ extension AccessToken {
    - parameter completion: Optional completion to call when the token was refreshed or failed.
    */
   public static func refreshCurrentToken(_ completion: ((AccessToken?, Error?) -> Void)? = nil) {
-    FBSDKAccessToken.refreshCurrentAccessToken { (_, _, error: NSError?) in
+    FBSDKAccessToken.refreshCurrentAccessToken { (_, _, error: Error?) in
       completion?(self.current, error)
     }
   }

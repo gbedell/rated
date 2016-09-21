@@ -137,7 +137,7 @@ extension GraphRequestConnection {
 
 extension GraphRequestConnection {
   /// Custom typealias that is the same as FBSDKGraphRequestHandler, but without implicitly unwrapped optionals.
-  fileprivate typealias SDKRequestCompletion = (_ connection: FBSDKGraphRequestConnection?, _ rawResponse: AnyObject?, _ error: NSError?) -> Void
+  fileprivate typealias SDKRequestCompletion = (_ connection: FBSDKGraphRequestConnection?, _ rawResponse: Any?, _ error: Error?) -> Void
 
   fileprivate func sdkRequestCompletion<T: GraphRequestProtocol>(
     from completion: @escaping ((_ httpResponse: HTTPURLResponse?, _ result: GraphRequestResult<T>) -> Void)

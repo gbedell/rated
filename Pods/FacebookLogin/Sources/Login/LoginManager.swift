@@ -80,7 +80,7 @@ open class LoginManager {
                     completion: ((LoginResult) -> Void)? = nil) {
     let sdkPermissions = permissions.map({ $0.permissionValue.name })
     sdkManager.logIn(withReadPermissions: sdkPermissions,
-                                        from: viewController,
+                     from: viewController,
                                         handler: LoginManager.sdkCompletionFor(completion))
   }
 
@@ -103,7 +103,7 @@ open class LoginManager {
                     completion: ((LoginResult) -> Void)? = nil) {
     let sdkPermissions = permissions.map({ $0.permissionValue.name })
     sdkManager.logIn(withPublishPermissions: sdkPermissions,
-                                           from: viewController,
+                     from: viewController,
                                            handler: LoginManager.sdkCompletionFor(completion))
   }
 
@@ -122,8 +122,8 @@ private extension LoginManager {
     guard let completion = completion else {
       return nil
     }
-    return { (sdkResult: FBSDKLoginManagerLoginResult?, error: NSError?) -> Void in
-      let result = LoginResult(sdkResult: sdkResult, error: error)
+    return { (sdkResult: FBSDKLoginManagerLoginResult?, error: Error?) -> Void in
+      let result = LoginResult(sdkResult: sdkResult, error: error as NSError?)
       completion(result)
     }
   }

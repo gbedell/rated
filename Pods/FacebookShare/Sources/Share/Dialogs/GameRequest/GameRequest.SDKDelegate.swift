@@ -30,7 +30,7 @@ extension GameRequest {
       completion?(result)
     }
 
-    func gameRequestDialog(_ gameRequestDialog: FBSDKGameRequestDialog?, didFailWithError error: NSError) {
+    func gameRequestDialog(_ gameRequestDialog: FBSDKGameRequestDialog?, didFailWithError error: Error) {
       completion?(.failed(error))
     }
 

@@ -98,13 +98,12 @@ extension OpenGraphObject {
 
   internal init(sdkGraphObject: FBSDKShareOpenGraphObject) {
     self.properties = [:]
-
-    sdkGraphObject.enumerateKeysAndObjects { (key: String?, value: AnyObject?, stop) in
+    sdkGraphObject.enumerateKeysAndObjects {(key: String?, value: Any?, stop) in
       guard let key = key.map(OpenGraphPropertyName.init(rawValue:)),
         let value = value.map(OpenGraphPropertyValueConverter.valueFrom) else {
         return
       }
-      self.properties[key] = value
+      defer { self.properties[key] = value }
     }
   }
 }

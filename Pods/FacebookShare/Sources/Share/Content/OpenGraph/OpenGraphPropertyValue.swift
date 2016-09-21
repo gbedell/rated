@@ -24,11 +24,11 @@ import FBSDKShareKit
  */
 public protocol OpenGraphPropertyValue {
   /// The bridged OpenGraph raw value.
-  var openGraphPropertyValue: AnyObject { get }
+  var openGraphPropertyValue: Any { get }
 }
 
 internal struct OpenGraphPropertyValueConverter {
-  internal static func valueFrom(openGraphObjectValue value: AnyObject) -> OpenGraphPropertyValue? {
+  internal static func valueFrom(openGraphObjectValue value: Any) -> OpenGraphPropertyValue? {
     switch value {
     case let value as String: return value
     case let value as NSNumber: return value
@@ -45,21 +45,21 @@ internal struct OpenGraphPropertyValueConverter {
 
 extension NSNumber: OpenGraphPropertyValue {
   /// The bridged OpenGraph raw value.
-  public var openGraphPropertyValue: AnyObject {
+  public var openGraphPropertyValue: Any {
     return self
   }
 }
 
 extension String: OpenGraphPropertyValue {
   /// The bridged OpenGraph raw value.
-  public var openGraphPropertyValue: AnyObject {
-    return self as AnyObject
+  public var openGraphPropertyValue: Any {
+    return self as Any
   }
 }
 
 extension Array: OpenGraphPropertyValue {
   /// The bridged OpenGraph raw value.
-  public var openGraphPropertyValue: AnyObject {
+  public var openGraphPropertyValue: Any {
     return self
       .flatMap { $0 as? OpenGraphPropertyValue }
       .map { $0.openGraphPropertyValue }
@@ -68,21 +68,21 @@ extension Array: OpenGraphPropertyValue {
 
 extension URL: OpenGraphPropertyValue {
   /// The bridged OpenGraph raw value.
-  public var openGraphPropertyValue: AnyObject {
-    return self as AnyObject
+  public var openGraphPropertyValue: Any {
+    return self as Any
   }
 }
 
 extension Photo: OpenGraphPropertyValue {
   /// The bridged OpenGraph raw value.
-  public var openGraphPropertyValue: AnyObject {
+  public var openGraphPropertyValue: Any {
     return sdkPhotoRepresentation
   }
 }
 
 extension OpenGraphObject: OpenGraphPropertyValue {
   /// The bridged OpenGraph raw value.
-  public var openGraphPropertyValue: AnyObject {
+  public var openGraphPropertyValue: Any {
     return sdkGraphObjectRepresentation
   }
 }

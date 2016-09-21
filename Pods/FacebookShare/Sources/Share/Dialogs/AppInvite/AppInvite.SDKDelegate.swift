@@ -36,7 +36,7 @@ extension AppInvite {
       completion?(.success(results?.keyValueFlatMap { ($0 as? String, $1 as? String) } ?? [:]))
     }
 
-    func appInviteDialog(_ appInviteDialog: FBSDKAppInviteDialog?, didFailWithError error: NSError) {
+    func appInviteDialog(_ appInviteDialog: FBSDKAppInviteDialog?, didFailWithError error: Error) {
       completion?(.failed(error))
     }
   }
