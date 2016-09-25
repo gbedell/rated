@@ -21,7 +21,7 @@ import FBSDKShareKit
 /**
  A model for a game request.
  */
-public struct GameRequest: Equatable {
+public struct GameRequest {
   /**
    Used when defining additional context about the nature of the request.
    */
@@ -73,52 +73,36 @@ public struct GameRequest: Equatable {
   public init(title: String, message: String) {
     self.title = title
     self.message = message
-    self.recipientsFilter = .Default
+    self.recipientsFilter = .none
+  }
+}
+
+extension GameRequest: Equatable {
+  /**
+   Compare two `GameRequest`s for equality.
+
+   - parameter lhs: The first request to compare.
+   - parameter rhs: The second request to compare.
+
+   - returns: Whether or not the requests are equal.
+   */
+  public static func == (lhs: GameRequest, rhs: GameRequest) -> Bool {
+    return lhs.sdkContentRepresentation == rhs.sdkContentRepresentation
   }
 }
 
 extension GameRequest {
   internal var sdkContentRepresentation: FBSDKGameRequestContent {
     let sdkContent = FBSDKGameRequestContent()
-    let actionRepresentation = actionType?.sdkActionRepresentation
-    sdkContent.actionType = actionRepresentation?.0 ?? .none
-    sdkContent.objectID = actionRepresentation?.1
+    let sdkActionRepresentation = actionType?.sdkActionRepresentation ?? (.none, nil)
+    sdkContent.actionType = sdkActionRepresentation.0
+    sdkContent.objectID = sdkActionRepresentation.1
     sdkContent.data = data
     sdkContent.filters = recipientsFilter.sdkFilterRepresentation
     sdkContent.title = title
     sdkContent.message = message
     sdkContent.recipients = recipients?.map { $0.rawValue }
     sdkContent.recipientSuggestions = recipientSuggestions?.map { $0.rawValue }
-
     return sdkContent
-  }
-}
-
-/**
- Compare two `GameRequest`s for equality.
-
- - parameter lhs: The first request to compare.
- - parameter rhs: The second request to compare.
-
- - returns: Whether or not the requests are equal.
- */
-public func == (lhs: GameRequest, rhs: GameRequest) -> Bool {
-  return lhs.sdkContentRepresentation == rhs.sdkContentRepresentation
-}
-
-/**
- Compare two `Recipient`s for equality.
-
- - parameter lhs: The first recipient to compare.
- - parameter rhs: The second recipient to compare.
-
- - returns: Whether or not the recipients are equal.
- */
-public func == (lhs: GameRequest.Recipient, rhs: GameRequest.Recipient) -> Bool {
-  switch (lhs, rhs) {
-  case (.userId(let lhs), .userId(let rhs)): return lhs == rhs
-  case (.username(let lhs), .username(let rhs)): return lhs == rhs
-  case (.inviteToken(let lhs), .inviteToken(let rhs)): return lhs == rhs
-  default: return false
   }
 }

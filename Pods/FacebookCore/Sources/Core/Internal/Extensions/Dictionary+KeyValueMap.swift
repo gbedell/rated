@@ -20,7 +20,7 @@ extension Dictionary {
   func keyValueMap<K, V>(_ transform: (Element) throws -> (K, V)) rethrows -> [K:V] {
     var dictionary: [K:V] = [:]
     try forEach {
-      let transformed = try transform(($0.0, $0.1))
+      let transformed = try transform($0)
       dictionary[transformed.0] = transformed.1
     }
     return dictionary
@@ -29,7 +29,7 @@ extension Dictionary {
   func keyValueFlatMap<K, V>(_ transform: (Element) throws -> (K?, V?)) rethrows -> [K:V] {
     var dictionary: [K:V] = [:]
     try forEach {
-      let transformed = try transform(($0.0, $0.1))
+      let transformed = try transform($0)
       if let key = transformed.0,
         let value = transformed.1 {
         dictionary[key] = value

@@ -34,7 +34,6 @@ import FBSDKCoreKit
 
  A `start` function is provided for convenience for single requests.
  */
-
 public protocol GraphRequestProtocol {
   associatedtype Response: GraphResponseProtocol
 
@@ -60,7 +59,7 @@ extension GraphRequestProtocol {
 
    - parameter completion: Optional completion closure that is going to be called when the connection finishes or fails.
    */
-  public func start(_ completion: ((_ httpResponse: HTTPURLResponse?, _ result: GraphRequestResult<Self>) -> Void)? = nil) {
+  public func start(_ completion: GraphRequestConnection.Completion<Self>? = nil) {
     let connection = GraphRequestConnection()
     connection.add(self, completion: completion)
     connection.start()

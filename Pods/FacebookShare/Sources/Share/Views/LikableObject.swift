@@ -21,7 +21,7 @@ import FBSDKShareKit
 /**
  Specifies the type of object referenced by the objectID for likes.
  */
-public enum LikableObject: Equatable {
+public enum LikableObject {
   /// The objectId refers to an OpenGraph object.
   case openGraph(objectId: String)
 
@@ -54,14 +54,16 @@ extension LikableObject {
   }
 }
 
-/**
- Compare two `LikableObject`s for equality.
+extension LikableObject: Equatable {
+  /**
+   Compare two `LikableObject`s for equality.
 
- - parameter lhs: The first object to compare.
- - parameter rhs: The second object to compare.
+   - parameter lhs: The first object to compare.
+   - parameter rhs: The second object to compare.
 
- - returns: Whether or not the objects are equal.
- */
-public func == (lhs: LikableObject, rhs: LikableObject) -> Bool {
-  return lhs.sdkObjectRepresntation.objectId == rhs.sdkObjectRepresntation.objectId
+   - returns: Whether or not the objects are equal.
+   */
+  public static func == (lhs: LikableObject, rhs: LikableObject) -> Bool {
+    return lhs.sdkObjectRepresntation.objectId == rhs.sdkObjectRepresntation.objectId
+  }
 }

@@ -59,7 +59,7 @@ public enum LoginBehavior {
 }
 
 extension LoginBehavior {
-  var sdkBehavior: FBSDKLoginBehavior {
+  internal var sdkBehavior: FBSDKLoginBehavior {
     switch self {
     case .native: return .native
     case .browser: return .browser

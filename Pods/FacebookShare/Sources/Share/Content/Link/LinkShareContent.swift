@@ -100,18 +100,19 @@ public struct LinkShareContent: ContentProtocol {
   public var referer: String?
 }
 
-extension LinkShareContent: Equatable { }
+extension LinkShareContent: Equatable {
 
-/**
- Compares two `LinkContent`s for equality.
+  /**
+   Compares two `LinkContent`s for equality.
 
- - parameter lhs: One content to compare.
- - parameter rhs: The other content to compare to.
+   - parameter lhs: One content to compare.
+   - parameter rhs: The other content to compare to.
 
- - returns: Whether or not the content are equivalent.
- */
-public func == (lhs: LinkShareContent, rhs: LinkShareContent) -> Bool {
-  return lhs.sdkSharingContentRepresentation.isEqual(rhs.sdkSharingContentRepresentation)
+   - returns: Whether or not the content are equivalent.
+   */
+  public static func == (lhs: LinkShareContent, rhs: LinkShareContent) -> Bool {
+    return lhs.sdkSharingContentRepresentation.isEqual(rhs.sdkSharingContentRepresentation)
+  }
 }
 
 extension LinkShareContent: SDKBridgedContent {

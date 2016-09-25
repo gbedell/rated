@@ -23,7 +23,7 @@ import FBSDKShareKit
 /**
  A photo for sharing.
  */
-public struct Photo: Equatable {
+public struct Photo {
   ///  If the photo is resident in memory, this method supplies the data.
   public var image: UIImage?
 
@@ -81,14 +81,16 @@ extension Photo {
   }
 }
 
-/**
- Compare to photos for equality.
+extension Photo: Equatable {
+  /**
+   Compare to photos for equality.
 
- - parameter lhs: The first photo to compare.
- - parameter rhs: The second photo to compare.
+   - parameter lhs: The first photo to compare.
+   - parameter rhs: The second photo to compare.
 
- - returns: Whether or not the photos are equal.
- */
-public func == (lhs: Photo, rhs: Photo) -> Bool {
-  return lhs.sdkPhotoRepresentation == rhs.sdkPhotoRepresentation
+   - returns: Whether or not the photos are equal.
+   */
+  public static func == (lhs: Photo, rhs: Photo) -> Bool {
+    return lhs.sdkPhotoRepresentation == rhs.sdkPhotoRepresentation
+  }
 }

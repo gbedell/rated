@@ -102,6 +102,7 @@ extension GameRequest.Dialog {
    - returns: The dialog instance that has been shown.
    - throws: If the  dialog fails to be presented.
    */
+  @discardableResult
   public static func show(_ request: GameRequest, completion: ((GameRequest.Result) -> Void)?) throws -> Self {
     let dialog = self.init(request: request)
     dialog.completion = completion

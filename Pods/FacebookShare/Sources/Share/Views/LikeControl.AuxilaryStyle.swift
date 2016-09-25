@@ -22,7 +22,7 @@ extension LikeControl {
   /**
    Specifies the style of the auxilary view in the like control.
    */
-  public enum AuxilaryStyle: Equatable {
+  public enum AuxilaryStyle {
     /// Use the standard social share message.
     case standard(horizontalAlignment: HorizontalAlignment, verticalAlignment: VerticalAlignment)
 
@@ -69,12 +69,28 @@ extension LikeControl {
   }
 }
 
+extension LikeControl.AuxilaryStyle: Equatable {
+  /**
+   Compare two `AuxilaryStyle`'s for equality.
+
+   - parameter lhs: The first style to compare.
+   - parameter rhs: The second style to compare.
+
+   - returns: Whether or not the styles are equal.
+   */
+  public static func == (lhs: LikeControl.AuxilaryStyle, rhs: LikeControl.AuxilaryStyle) -> Bool {
+    switch (lhs, rhs) {
+    case (.standard(let lhs), .standard(let rhs)): return lhs == rhs
+    case (.boxCount(let lhs), .boxCount(let rhs)): return lhs == rhs
+    default: return false
+    }
+  }
+}
+
 extension LikeControl.AuxilaryStyle {
-  internal init(
-    sdkStyle: FBSDKLikeControlStyle,
-    sdkHorizontalAlignment: FBSDKLikeControlHorizontalAlignment,
-    sdkAuxilaryPosition: FBSDKLikeControlAuxiliaryPosition
-    ) {
+  internal init(sdkStyle: FBSDKLikeControlStyle,
+                sdkHorizontalAlignment: FBSDKLikeControlHorizontalAlignment,
+                sdkAuxilaryPosition: FBSDKLikeControlAuxiliaryPosition) {
     let horizontalAlignment = HorizontalAlignment(sdkHorizontalAlignment: sdkHorizontalAlignment)
     let verticalAlignment = VerticalAlignment(sdkAuxilaryPosition: sdkAuxilaryPosition)
 
@@ -154,21 +170,5 @@ extension LikeControl.AuxilaryStyle {
       case .bottom: return .bottom
       }
     }
-  }
-}
-
-/**
- Compare two `AuxilaryStyle`'s for equality.
-
- - parameter lhs: The first style to compare.
- - parameter rhs: The second style to compare.
-
- - returns: Whether or not the styles are equal.
- */
-public func == (lhs: LikeControl.AuxilaryStyle, rhs: LikeControl.AuxilaryStyle) -> Bool {
-  switch (lhs, rhs) {
-  case (.standard(let lhs), .standard(let rhs)): return lhs == rhs
-  case (.boxCount(let lhs), .boxCount(let rhs)): return lhs == rhs
-  default: return false
   }
 }

@@ -65,23 +65,24 @@ extension Permission: ExpressibleByStringLiteral {
   }
 }
 
-extension Permission: Equatable, Hashable {
+extension Permission: Hashable {
+
   /// The hash value.
   public var hashValue: Int {
     return name.hashValue
   }
-}
 
-/**
- Compare two `Permission`s for equality.
+  /**
+   Compare two `Permission`s for equality.
 
- - parameter lhs: The first permission to compare.
- - parameter rhs: The second permission to compare.
+   - parameter lhs: The first permission to compare.
+   - parameter rhs: The second permission to compare.
 
- - returns: Whether or not the permissions are equal.
- */
-public func == (lhs: Permission, rhs: Permission) -> Bool {
-  return lhs.name == rhs.name
+   - returns: Whether or not the permissions are equal.
+   */
+  public static func == (lhs: Permission, rhs: Permission) -> Bool {
+    return lhs.name == rhs.name
+  }
 }
 
 internal protocol PermissionRepresentable {

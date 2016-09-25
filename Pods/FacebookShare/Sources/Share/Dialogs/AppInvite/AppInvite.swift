@@ -22,7 +22,7 @@ import FBSDKShareKit
 /**
  A model for an app invite.
  */
-public struct AppInvite: Equatable {
+public struct AppInvite {
 
   /// An app link target that will be used as a target when the user accepts the invite.
   public var appLink: URL
@@ -55,6 +55,20 @@ public struct AppInvite: Equatable {
   }
 }
 
+extension AppInvite: Equatable {
+  /**
+   Compare two `AppInvite`s for equality.
+
+   - parameter lhs: The first invite to compare.
+   - parameter rhs: The second invite to compare.
+
+   - returns: Whether or not the invites are equal.
+   */
+  public static func == (lhs: AppInvite, rhs: AppInvite) -> Bool {
+    return lhs.sdkInviteRepresentation == rhs.sdkInviteRepresentation
+  }
+}
+
 extension AppInvite {
   internal var sdkInviteRepresentation: FBSDKAppInviteContent {
     let sdkContent = FBSDKAppInviteContent()
@@ -66,16 +80,4 @@ extension AppInvite {
 
     return sdkContent
   }
-}
-
-/**
- Compare two `AppInvite`s for equality.
-
- - parameter lhs: The first invite to compare.
- - parameter rhs: The second invite to compare.
-
- - returns: Whether or not the invites are equal.
- */
-public func == (lhs: AppInvite, rhs: AppInvite) -> Bool {
-  return lhs.sdkInviteRepresentation == rhs.sdkInviteRepresentation
 }

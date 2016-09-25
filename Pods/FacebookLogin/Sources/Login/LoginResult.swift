@@ -33,7 +33,7 @@ public enum LoginResult {
 }
 
 extension LoginResult {
-  internal init(sdkResult: FBSDKLoginManagerLoginResult?, error: NSError?) {
+  internal init(sdkResult: FBSDKLoginManagerLoginResult?, error: Error?) {
     if let error = error {
       self = .failed(error)
       return

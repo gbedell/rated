@@ -30,20 +30,20 @@ class RatingsTableViewController: UITableViewController {
         static let GET_USER_RATINGS_URL = "http://localhost:8080/ratings/find-by-rater/"
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> RatingTableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("RatingCell", forIndexPath: indexPath) as! RatingTableViewCell
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return ratings.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> RatingTableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RatingCell", for: indexPath) as! RatingTableViewCell
         let rating = self.ratings[indexPath.row]
         cell.rating = rating
         return cell
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ratings.count
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == uiConstants.CREATE_RATING_SEGUE {
-            var destinationVC = segue.destinationViewController
+            var destinationVC = segue.destination
             if let navcon = destinationVC as? UINavigationController {
                 destinationVC = navcon.visibleViewController ?? destinationVC
             }
@@ -51,7 +51,7 @@ class RatingsTableViewController: UITableViewController {
                 createRatingVC.rater = self.rater
             }
         } else if segue.identifier == uiConstants.VIEW_RATING_SEGUE {
-            if let destinationVC = segue.destinationViewController as? RatingViewController {
+            if let destinationVC = segue.destination as? RatingViewController {
                 let cell = sender as! RatingTableViewCell
                 let ratingName = cell.ratingName.text
                 let ratingScore = cell.ratingScore.text
@@ -66,10 +66,10 @@ class RatingsTableViewController: UITableViewController {
     private func getUserRatings() {
         // Call REST API to get User Ratings
         if let raterId = rater?.raterId {
-            Alamofire.request(.GET, uiConstants.GET_USER_RATINGS_URL + String(raterId))
+            Alamofire.request(uiConstants.GET_USER_RATINGS_URL + String(raterId))
                 .responseJSON { response in
                     switch response.result {
-                    case .Success(let data):
+                    case .success(let data):
                         print(data)
                         let json = JSON(data)
                         if let ratingsArray = json.array {
@@ -82,7 +82,7 @@ class RatingsTableViewController: UITableViewController {
                                 self.ratings.append(rating)
                             }
                         }
-                    case .Failure(let error):
+                    case .failure(let error):
                         print("Request failed with error: \(error)")
                     }
             }

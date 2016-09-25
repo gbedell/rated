@@ -10,27 +10,6 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
-
-
 class CreateRatingViewController: UIViewController {
     
     var rater: Rater?
@@ -58,18 +37,16 @@ class CreateRatingViewController: UIViewController {
                 let ratingScore = roundToPlaces(Double(ratingSlider.value), decimalPlaces: 1)
                 let raterId = existingRater.raterId
                 let facebookId = existingRater.facebookId
-                let raterParams: [String: AnyObject] = [
-                    "userId": raterId! as AnyObject,
-                    "facebookId": facebookId! as AnyObject
+                let params: Parameters = [
+                        "name": ratingName,
+                        "score": ratingScore,
+                        "rater": [
+                            "raterId": raterId,
+                            "facebookId": facebookId
+                        ]
                 ]
-                let params: [String: AnyObject] = [
-                    "name"  : ratingName as AnyObject,
-                    "score" : ratingScore as AnyObject,
-                    "rater" : raterParams as AnyObject
-                ]
-                print("Parameters: \(params)")
                 // Call Rest API
-                Alamofire.request(.POST, uiConstants.CREATE_RATING_URL, parameters: params, encoding: .json, headers: nil)
+                Alamofire.request(uiConstants.CREATE_RATING_URL, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil)
                     .responseJSON { response in
                         switch response.result {
                         case .success(let data):
@@ -90,7 +67,7 @@ class CreateRatingViewController: UIViewController {
     }
     
     @IBAction func checkEnableCreateButton(_ sender: UITextField) {
-        if sender.text?.characters.count > 0 {
+        if (sender.text?.characters.count)! > 0 {
             createRatingButton.isEnabled = true
         } else {
             createRatingButton.isEnabled = false

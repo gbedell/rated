@@ -145,6 +145,18 @@ extension AppEventName: Hashable {
   public var hashValue: Int {
     return self.rawValue.hashValue
   }
+
+  /**
+   Compare two `AppEventName`s for equality.
+
+   - parameter lhs: The first app event name to compare.
+   - parameter rhs: The second app event name to compare.
+
+   - returns: Whether or not the app event names are equal.
+   */
+  public static func == (lhs: AppEventName, rhs: AppEventName) -> Bool {
+    return lhs.rawValue == rhs.rawValue
+  }
 }
 
 extension AppEventName: CustomStringConvertible {
@@ -152,16 +164,4 @@ extension AppEventName: CustomStringConvertible {
   public var description: String {
     return rawValue
   }
-}
-
-/**
- Compare two `AppEventName`s for equality.
-
- - parameter lhs: The first app event name to compare.
- - parameter rhs: The second app event name to compare.
-
- - returns: Whether or not the app event names are equal.
- */
-public func == (lhs: AppEventName, rhs: AppEventName) -> Bool {
-  return lhs.rawValue == rhs.rawValue
 }

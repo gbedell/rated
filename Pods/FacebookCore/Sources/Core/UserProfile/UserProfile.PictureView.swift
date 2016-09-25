@@ -24,19 +24,19 @@ import FBSDKCoreKit.FBSDKProfilePictureView
 extension UserProfile {
 
   /// A view to display a profile picture.
-  open class PictureView: UIView {
+  public final class PictureView: UIView {
 
     fileprivate let sdkProfilePictureView = FBSDKProfilePictureView(frame: .zero)
 
     /// The aspect ratio of the source image of the profile picture.
-    open var pictureAspectRatio = UserProfile.PictureAspectRatio.square {
+    public var pictureAspectRatio = UserProfile.PictureAspectRatio.square {
       didSet {
         sdkProfilePictureView.pictureMode = pictureAspectRatio.sdkPictureMode
       }
     }
 
     /// The user id to show the picture for.
-    open var userId = "me" {
+    public var userId = "me" {
       didSet {
         sdkProfilePictureView.profileID = userId
       }
@@ -73,7 +73,7 @@ extension UserProfile {
      This method is called whenever any properties that affect the source image are modified,
      but this can also be used to trigger a manual update of the image if it needs to be re-downloaded.
      */
-    open func setNeedsImageUpdate() {
+    public func setNeedsImageUpdate() {
       sdkProfilePictureView.setNeedsImageUpdate()
     }
   }

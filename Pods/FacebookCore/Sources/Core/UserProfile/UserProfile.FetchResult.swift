@@ -32,7 +32,7 @@ extension UserProfile {
 
 extension UserProfile.FetchResult {
 
-  internal init(sdkProfile: FBSDKProfile?, error: NSError?) {
+  internal init(sdkProfile: FBSDKProfile?, error: Error?) {
     if let error = error {
       self = .failed(error)
     } else if let sdkProfile = sdkProfile {

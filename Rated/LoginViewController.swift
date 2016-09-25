@@ -39,7 +39,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     // Mark - FBSDKLoginButtonDelegate Methods
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         print("User logged in")
         
         if((error) != nil) {
@@ -93,7 +93,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     fileprivate func getUserInfo(_ facebookId: Int) {
-        Alamofire.request(.GET, loginViewConstants.GET_USER_INFO_URL + String(facebookId))
+        Alamofire.request(loginViewConstants.GET_USER_INFO_URL + String(facebookId))
             .responseJSON { response in
                 switch response.result {
                 case .success(let data):

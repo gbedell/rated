@@ -6,17 +6,17 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - FacebookCore (0.1.1):
+  - FacebookCore (0.2.0):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.15)
-  - FacebookLogin (0.1.1):
+  - FacebookLogin (0.2.0):
     - Bolts (~> 1.8)
-    - FacebookCore
+    - FacebookCore (~> 0.2)
     - FBSDKCoreKit (~> 4.15)
     - FBSDKLoginKit (~> 4.15)
-  - FacebookShare (0.1.1):
+  - FacebookShare (0.2.0):
     - Bolts (~> 1.8)
-    - FacebookCore
+    - FacebookCore (~> 0.2)
     - FBSDKCoreKit (~> 4.15)
     - FBSDKShareKit (~> 4.15)
   - FBSDKCoreKit (4.15.1):
@@ -25,54 +25,26 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.15.1):
     - FBSDKCoreKit
-  - SwiftyJSON (2.3.2)
+  - SwiftyJSON (3.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
-  - FacebookCore (from `https://github.com/gerbiljames/facebook-sdk-swift.git`, branch `swift-3.0`)
-  - FacebookLogin (from `https://github.com/gerbiljames/facebook-sdk-swift.git`, branch `swift-3.0`)
-  - FacebookShare (from `https://github.com/gerbiljames/facebook-sdk-swift.git`, branch `swift-3.0`)
-  - SwiftyJSON (from `https://github.com/acegreen/SwiftyJSON.git`, branch `swift3`)
-
-EXTERNAL SOURCES:
-  FacebookCore:
-    :branch: swift-3.0
-    :git: https://github.com/gerbiljames/facebook-sdk-swift.git
-  FacebookLogin:
-    :branch: swift-3.0
-    :git: https://github.com/gerbiljames/facebook-sdk-swift.git
-  FacebookShare:
-    :branch: swift-3.0
-    :git: https://github.com/gerbiljames/facebook-sdk-swift.git
-  SwiftyJSON:
-    :branch: swift3
-    :git: https://github.com/acegreen/SwiftyJSON.git
-
-CHECKOUT OPTIONS:
-  FacebookCore:
-    :commit: f337719e9a82947b99f36241bc68e8cde7b532dd
-    :git: https://github.com/gerbiljames/facebook-sdk-swift.git
-  FacebookLogin:
-    :commit: f337719e9a82947b99f36241bc68e8cde7b532dd
-    :git: https://github.com/gerbiljames/facebook-sdk-swift.git
-  FacebookShare:
-    :commit: f337719e9a82947b99f36241bc68e8cde7b532dd
-    :git: https://github.com/gerbiljames/facebook-sdk-swift.git
-  SwiftyJSON:
-    :commit: 8971384559780e631b041ac91b16734a396d4c14
-    :git: https://github.com/acegreen/SwiftyJSON.git
+  - FacebookCore
+  - FacebookLogin
+  - FacebookShare
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  FacebookCore: aae38a4f6b3f8d3f0a58113813ce9e0396d85787
-  FacebookLogin: da9ce37b68f5c386ba0a346639fd983c2957bf0d
-  FacebookShare: 6edb929bf66c0f467549dac2335c27aa64ccf89b
+  FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
+  FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
+  FacebookShare: 8e9ee8ea06505e6a1d3d719b0cc63e840fb8aaeb
   FBSDKCoreKit: fc7fa53d16b095ee3fd53f0cd59f1df8bcbb634d
   FBSDKLoginKit: 073f79b3b2e762fc6f54a283fe15f45372d59f5f
   FBSDKShareKit: 11cbb5a4d7b5fda8143cc95b76188147e6725736
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  SwiftyJSON: f57b2b44bc166617372d1c70773591fe9f0f5fd4
 
-PODFILE CHECKSUM: 961e739bbc442eea0c2a285aa9a13aaa4eabba02
+PODFILE CHECKSUM: b8d549e54acdd38e077433bc56031279c3779280
 
 COCOAPODS: 1.1.0.rc.2

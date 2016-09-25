@@ -115,8 +115,8 @@ extension AppInvite.Dialog {
    */
   @discardableResult
   public static func show(from viewController: UIViewController,
-                               invite: AppInvite,
-                               completion: ((AppInvite.Result) -> Void)? = nil) throws -> Self {
+                          invite: AppInvite,
+                          completion: ((AppInvite.Result) -> Void)? = nil) throws -> Self {
     let dialog = self.init(invite: invite)
     dialog.presentingViewController = viewController
     dialog.completion = completion

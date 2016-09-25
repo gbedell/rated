@@ -18,7 +18,7 @@
 
 /**
  Represents result of a single request.
- Can either be `.Success` or `.Failed`
+ Can either be `.success` or `.failed`
  */
 public enum GraphRequestResult<T: GraphRequestProtocol> {
   /**

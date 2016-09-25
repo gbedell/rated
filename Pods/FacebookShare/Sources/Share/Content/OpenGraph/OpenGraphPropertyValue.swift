@@ -53,7 +53,7 @@ extension NSNumber: OpenGraphPropertyValue {
 extension String: OpenGraphPropertyValue {
   /// The bridged OpenGraph raw value.
   public var openGraphPropertyValue: Any {
-    return self as Any
+    return self
   }
 }
 
@@ -69,7 +69,7 @@ extension Array: OpenGraphPropertyValue {
 extension URL: OpenGraphPropertyValue {
   /// The bridged OpenGraph raw value.
   public var openGraphPropertyValue: Any {
-    return self as Any
+    return self
   }
 }
 

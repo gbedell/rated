@@ -37,7 +37,7 @@ extension LoginButtonDelegateBridge: FBSDKLoginButtonDelegate {
         return
     }
 
-    let result = LoginResult(sdkResult: sdkResult, error: error as NSError?)
+    let result = LoginResult(sdkResult: sdkResult, error: error)
     delegate.loginButtonDidCompleteLogin(loginButton, result: result)
   }
 

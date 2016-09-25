@@ -140,7 +140,7 @@ extension UserProfile {
 
    - parameter completion: Optional closure to be executed once the profile is refreshed. Default: `nil`.
    */
-  public func refresh(_ completion: Completion? = nil) {
+  public func refresh(_ completion: Completion?) {
     UserProfile.fetch(userId: userId) { result in
       completion?(result)
     }
@@ -176,26 +176,21 @@ extension UserProfile {
   public static func loadCurrent(_ completion: Completion?) {
     FBSDKProfile.loadCurrentProfile { (sdkProfile: FBSDKProfile?, error: Error?) in
       if let completion = completion {
-        let result = FetchResult(sdkProfile: sdkProfile, error: error as NSError?)
+        let result = FetchResult(sdkProfile: sdkProfile, error: error)
         completion(result)
       }
     }
   }
 
-  fileprivate static var _updatesOnAccessTokenChange: Bool = false
   /**
    Allows controlling whether `current` profile should automatically update when `AccessToken.current` changes.
 
    - note: If `AccessToken.current` is unset (changes to `nil`), the `current` profile instance remains.
    It's also possible for the `current` to return `nil` until the data is fetched.
    */
-  public static var updatesOnAccessTokenChange: Bool {
-    get {
-      return _updatesOnAccessTokenChange
-    }
-    set {
-      _updatesOnAccessTokenChange = newValue
-      FBSDKProfile.enableUpdates(onAccessTokenChange: newValue)
+  public static var updatesOnAccessTokenChange: Bool = false {
+    didSet {
+      FBSDKProfile.enableUpdates(onAccessTokenChange: updatesOnAccessTokenChange)
     }
   }
 }

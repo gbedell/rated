@@ -28,15 +28,12 @@ import FBSDKCoreKit
 public struct GraphAPIVersion {
   /// String representation of an api version.
   public let stringValue: String
-}
-
-extension GraphAPIVersion {
 
   /**
    Represents the default Graph API version.
    Note: This value may change between versions of the SDK.
    */
-  public static let Default: GraphAPIVersion = {
+  public static let defaultVersion: GraphAPIVersion = {
     var version = FBSDK_TARGET_PLATFORM_VERSION
     // ObjC SDK has a prefix of `v` on this constant
     if version.hasPrefix("v") {

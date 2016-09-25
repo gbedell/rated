@@ -32,18 +32,18 @@ import FBSDKLoginKit
  If you are managing your own token instances outside of `AccessToken.current`, you will need to set
  `current` before calling `logIn()` to authorize further permissions on your tokens.
  */
-open class LoginManager {
+public final class LoginManager {
   fileprivate let sdkManager = FBSDKLoginManager()
 
   /// The login behavior that is going to be used. Default: `.Native`.
-  open var loginBehavior: LoginBehavior {
+  public var loginBehavior: LoginBehavior {
     didSet {
       sdkManager.loginBehavior = loginBehavior.sdkBehavior
     }
   }
 
   /// The default audience. Default: `.Friends`.
-  open var defaultAudience: LoginDefaultAudience {
+  public var defaultAudience: LoginDefaultAudience {
     didSet {
       sdkManager.defaultAudience = defaultAudience.sdkAudience
     }
@@ -75,13 +75,13 @@ open class LoginManager {
    - parameter viewController: Optional view controller to present from. Default: topmost view controller.
    - parameter completion:     Optional callback.
    */
-  open func logIn(_ permissions: [ReadPermission] = [.publicProfile],
+  public func logIn(_ permissions: [ReadPermission] = [.publicProfile],
                     viewController: UIViewController? = nil,
                     completion: ((LoginResult) -> Void)? = nil) {
     let sdkPermissions = permissions.map({ $0.permissionValue.name })
     sdkManager.logIn(withReadPermissions: sdkPermissions,
                      from: viewController,
-                                        handler: LoginManager.sdkCompletionFor(completion))
+                     handler: LoginManager.sdkCompletionFor(completion))
   }
 
   /**
@@ -98,20 +98,20 @@ open class LoginManager {
    - parameter viewController: Optional view controller to present from. Default: topmost view controller.
    - parameter completion:     Optional callback.
    */
-  open func logIn(_ permissions: [PublishPermission] = [.publishActions],
+  public func logIn(_ permissions: [PublishPermission] = [.publishActions],
                     viewController: UIViewController? = nil,
                     completion: ((LoginResult) -> Void)? = nil) {
     let sdkPermissions = permissions.map({ $0.permissionValue.name })
     sdkManager.logIn(withPublishPermissions: sdkPermissions,
                      from: viewController,
-                                           handler: LoginManager.sdkCompletionFor(completion))
+                     handler: LoginManager.sdkCompletionFor(completion))
   }
 
   /**
    Logs the user out.
    This calls `AccessToken.current = nil` and `Profile.current = nil`.
    */
-  open func logOut() {
+  public func logOut() {
     AccessToken.current = nil
     UserProfile.current = nil
   }
@@ -123,7 +123,7 @@ private extension LoginManager {
       return nil
     }
     return { (sdkResult: FBSDKLoginManagerLoginResult?, error: Error?) -> Void in
-      let result = LoginResult(sdkResult: sdkResult, error: error as NSError?)
+      let result = LoginResult(sdkResult: sdkResult, error: error)
       completion(result)
     }
   }

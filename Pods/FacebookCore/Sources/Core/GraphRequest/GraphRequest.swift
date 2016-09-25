@@ -61,7 +61,7 @@ public struct GraphRequest: GraphRequestProtocol {
               parameters: [String : Any] = [:],
               accessToken: AccessToken? = AccessToken.current,
               httpMethod: GraphRequestHTTPMethod = .GET,
-              apiVersion: GraphAPIVersion = .Default) {
+              apiVersion: GraphAPIVersion = .defaultVersion) {
     self.graphPath = graphPath
     self.parameters = parameters
     self.accessToken = accessToken

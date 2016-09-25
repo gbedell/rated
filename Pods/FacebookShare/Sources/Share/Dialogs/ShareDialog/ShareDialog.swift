@@ -142,9 +142,10 @@ extension ShareDialog {
    - returns: The `ShareDialog` that has been presented.
    - throws: If the dialog fails to validate.
    */
+  @discardableResult
   public static func show(from viewController: UIViewController,
-                               content: Content,
-                               completion: ((ContentSharerResult<Content>) -> Void)? = nil) throws -> Self {
+                          content: Content,
+                          completion: ((ContentSharerResult<Content>) -> Void)? = nil) throws -> Self {
     let shareDialog = self.init(content: content)
     shareDialog.presentingViewController = viewController
     shareDialog.completion = completion

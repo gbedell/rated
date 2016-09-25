@@ -113,6 +113,7 @@ extension MessageDialog {
    - returns: The dialog that has been presented.
    - throws: If the dialog fails to validate.
    */
+  @discardableResult
   public static func show(_ content: Content, completion: ((ContentSharerResult<Content>) -> Void)? = nil) throws -> Self {
     let dialog = self.init(content: content)
     dialog.completion = completion

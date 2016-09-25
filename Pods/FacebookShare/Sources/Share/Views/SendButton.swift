@@ -22,11 +22,11 @@ import FBSDKShareKit
 /**
  A button for sending content with messenger.
  */
-open class SendButton<C: ContentProtocol>: UIView {
+public class SendButton<C: ContentProtocol>: UIView {
   fileprivate var sdkSendButton: FBSDKSendButton
 
   /// The content to share.
-  open var content: C? = nil {
+  public var content: C? = nil {
     didSet {
       sdkSendButton.shareContent = content.flatMap(ContentBridger.bridgeToObjC)
     }
@@ -49,24 +49,14 @@ open class SendButton<C: ContentProtocol>: UIView {
     addSubview(sdkSendButton)
   }
 
-  /**
-   Create a new SendButton initialized from data in a given unarchiver.
-   
-   - parameter coder: An unarchiver object.
-   */
   required public init?(coder aDecoder: NSCoder) {
-    let sdkSendButton = FBSDKSendButton()
-    
-    self.sdkSendButton = sdkSendButton
-    
-    super.init(coder: aDecoder)
-    addSubview(sdkSendButton)
+      fatalError("init(coder:) has not been implemented")
   }
 
   /**
    Performs logic for laying out subviews.
    */
-  open override func layoutSubviews() {
+  public override func layoutSubviews() {
     super.layoutSubviews()
 
     sdkSendButton.frame = CGRect(origin: .zero, size: bounds.size)
@@ -75,7 +65,7 @@ open class SendButton<C: ContentProtocol>: UIView {
   /**
    Resizes and moves the receiver view so it just encloses its subviews.
    */
-  open override func sizeToFit() {
+  public override func sizeToFit() {
     bounds.size = sizeThatFits(CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude))
   }
 
@@ -86,7 +76,7 @@ open class SendButton<C: ContentProtocol>: UIView {
 
    - returns: A new size that fits the receiver’s subviews.
    */
-  open override func sizeThatFits(_ size: CGSize) -> CGSize {
+  public override func sizeThatFits(_ size: CGSize) -> CGSize {
     return sdkSendButton.sizeThatFits(size)
   }
 
@@ -95,7 +85,7 @@ open class SendButton<C: ContentProtocol>: UIView {
 
    - returns: A size indicating the natural size for the receiving view based on its intrinsic properties.
    */
-  open override var intrinsicContentSize: CGSize {
+  public override var intrinsicContentSize: CGSize {
     return sdkSendButton.intrinsicContentSize
   }
 }

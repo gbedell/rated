@@ -36,19 +36,19 @@ extension GameRequest {
     }
 
     /// Friends using the app cannot be displayed.
-    public static let HideUsers = RecipientsFilter(rawValue: 1 << 0)
+    public static let hideUsers = RecipientsFilter(rawValue: 1 << 0)
 
     /// Friends not using the app cannot be displayed.
-    public static let HideNonUsers = RecipientsFilter(rawValue: 1 << 1)
+    public static let hideNonUsers = RecipientsFilter(rawValue: 1 << 1)
 
     /// The default filter. Includes users and non-users.
-    public static let Default: RecipientsFilter = [ ]
+    public static let none: RecipientsFilter = [ ]
 
     internal var sdkFilterRepresentation: FBSDKGameRequestFilter {
-      if contains(.HideUsers) {
+      if contains(.hideUsers) {
         return .appNonUsers
       }
-      if contains(.HideNonUsers) {
+      if contains(.hideNonUsers) {
         return .appUsers
       }
       return .none
