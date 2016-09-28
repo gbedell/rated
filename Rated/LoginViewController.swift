@@ -7,81 +7,120 @@
 //
 
 import UIKit
-import FBSDKLoginKit
 import Alamofire
 import SwiftyJSON
+import FacebookLogin
+import FacebookCore
 
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
+class LoginViewController: UIViewController, LoginButtonDelegate {
     
     // Mark - Model
-    var rater: Rater? 
+    var rater: Rater?
+    
+    var accessToken: AccessToken?
     
     // Mark - View Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if (FBSDKAccessToken.current() != nil) {
-            print("Access token wasnt nil")
+        if let accessToken = AccessToken.current {
+            print("User has a current access token: \(accessToken)")
+            self.accessToken = accessToken
         } else {
-            let loginButton: FBSDKLoginButton = FBSDKLoginButton()
-            self.view.addSubview(loginButton)
-            loginButton.center = self.view.center
-            loginButton.readPermissions = ["public_profile", "email"]
+            print("No current access token")
+            let loginButton = LoginButton(readPermissions: [.publicProfile, .email])
+            loginButton.center = view.center
             loginButton.delegate = self
+            view.addSubview(loginButton)
         }
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if(FBSDKAccessToken.current() != nil) {
+        if let accessToken = self.accessToken {
+            print("Access token: \(accessToken)")
             returnUserData()
+        } else {
+            print("No access token")
         }
     }
     
-    // Mark - FBSDKLoginButtonDelegate Methods
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        print("User logged in")
-        
-        if((error) != nil) {
-            print("Hey, there's been an error")
-        }
-        else if result.isCancelled {
-            print("Hey, the login has been cancelled")
-        }
-        else {
-            if result.grantedPermissions.contains("email") {
-                print("I guess this permission was granted?")
-            }
+    func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
+        switch result {
+        case .success:
+            returnUserData()
+        case .cancelled:
+            print("User cancelled login.")
+        case .failed(let error):
+            print(error)
         }
     }
     
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print("User logged out")
+    func loginButtonDidLogOut(_ loginButton: LoginButton) {
+        print("User logged out.")
     }
     
-    // Mark - Private Methods
-    fileprivate struct loginViewConstants {
+    fileprivate struct controllerConstants {
         static let LOGIN_SUCCESS_SEGUE = "LoginSuccess"
-        static let GET_USER_INFO_URL = "http://localhost:8080/raters/find-by-fb/"
+        static let GET_USER_INFO_URL = "https://ratedrest.herokuapp.com/raters/facebook-id/"
     }
     
     fileprivate func returnUserData() {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-        graphRequest.start(completionHandler: { (connection, result, error) -> Void in
-            
-            if ((error) != nil) {
-                // Process error
-                print("Error: \(error)")
-            } else {
-                let json = JSON(result)
-                let fbId = json["id"].intValue
-                self.getUserInfo(fbId)
+        
+        let params = ["fields" : "email"]
+        let graphRequest = GraphRequest(graphPath: "me", parameters: params, accessToken: accessToken, httpMethod: .GET, apiVersion: .defaultVersion)
+        graphRequest.start { (urlResponse, requestResult) in
+            switch requestResult {
+            case .failed(let error):
+                print("Error with graph request: \(error).")
+            case .success(let graphResponse):
+                let resultJson = JSON(graphResponse.dictionaryValue)
+                
+                let facebookId = resultJson["id"].intValue
+                print("FacebookId = \(facebookId)")
+                
+                // Basic Auth
+                let user = "admin"
+                let password = "899e42fc-8807-442e-8c7b-dc561f0f194a"
+                
+                var headers: HTTPHeaders = [:]
+                
+                if let authorizationHeader = Request.authorizationHeader(user: user, password: password) {
+                    headers[authorizationHeader.key] = authorizationHeader.value
+                }
+                
+                Alamofire.request(controllerConstants.GET_USER_INFO_URL + String(facebookId), headers: headers)
+                    .responseJSON { response in
+                        switch response.result {
+                        case .success(let data):
+                            print(data)
+                            let json = JSON(data)
+                            let username = json["username"].stringValue
+                            let email = json["email"].stringValue
+                            let userId = json["userId"].intValue
+                            let facebookId = json["facebookId"].intValue
+                            
+                            let user = Rater()
+                            
+                            user.username = username
+                            user.email = email
+                            user.raterId = userId
+                            user.facebookId = facebookId
+                            
+                            self.rater = user
+                            
+                            self.performSegue(withIdentifier: controllerConstants.LOGIN_SUCCESS_SEGUE, sender: self)
+                            
+                        case .failure(let error):
+                            print("Request failed with error: \(error)")
+                        }
+                }
             }
-        })
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == loginViewConstants.LOGIN_SUCCESS_SEGUE {
+        if segue.identifier == controllerConstants.LOGIN_SUCCESS_SEGUE {
             var destinationVC = segue.destination
             if let navcon = destinationVC as? UINavigationController {
                 destinationVC = navcon.visibleViewController ?? destinationVC
@@ -90,37 +129,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 ratingsTableVC.rater = self.rater
             }
         }
-    }
-    
-    fileprivate func getUserInfo(_ facebookId: Int) {
-        Alamofire.request(loginViewConstants.GET_USER_INFO_URL + String(facebookId))
-            .responseJSON { response in
-                switch response.result {
-                case .success(let data):
-                    print(data)
-                    let json = JSON(data)
-                    let username = json["username"].stringValue
-                    let email = json["email"].stringValue
-                    let userId = json["userId"].intValue
-                    let facebookId = json["facebookId"].intValue
-                    
-                    let user = Rater()
-                    
-                    user.username = username
-                    user.email = email
-                    user.raterId = userId
-                    user.facebookId = facebookId
-                    
-                    self.rater = user
-                    
-                    self.performSegue(withIdentifier: loginViewConstants.LOGIN_SUCCESS_SEGUE, sender: self)
-                    
-                case .failure(let error):
-                    print("Request failed with error: \(error)")
-                }
-                
-            }
-        
     }
     
 }

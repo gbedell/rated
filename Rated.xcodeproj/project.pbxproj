@@ -38,6 +38,7 @@
 		D4BDF4FC1D7CD0E4003A3C60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4BDF5031D7CD1F1003A3C60 /* RatingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingsTableViewController.swift; sourceTree = "<group>"; };
 		D4BDF50C1D7CDB2F003A3C60 /* CreateRatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRatingViewController.swift; sourceTree = "<group>"; };
+		D4C326B41D98AE1F004556A2 /* Rated.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rated.entitlements; sourceTree = "<group>"; };
 		D4D1DC9A1D7DB84B00953494 /* RatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
 		D4D1DC9C1D7E436800953494 /* RatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,11 +94,11 @@
 		D4BDF4EC1D7CD0E4003A3C60 /* Rated */ = {
 			isa = PBXGroup;
 			children = (
+				D40334EE1D810D5900051DE9 /* LoginViewController.swift */,
 				D4BDF5031D7CD1F1003A3C60 /* RatingsTableViewController.swift */,
 				D4D1DC9C1D7E436800953494 /* RatingViewController.swift */,
 				D4BDF50C1D7CDB2F003A3C60 /* CreateRatingViewController.swift */,
 				D4D1DC9A1D7DB84B00953494 /* RatingTableViewCell.swift */,
-				D40334EE1D810D5900051DE9 /* LoginViewController.swift */,
 				D4BDF4F11D7CD0E4003A3C60 /* Main.storyboard */,
 				D410C4F01D8DD7DE00A15EED /* Objects */,
 				D4BDF5021D7CD1D6003A3C60 /* Supporting Files */,
@@ -108,6 +109,7 @@
 		D4BDF5021D7CD1D6003A3C60 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D4C326B41D98AE1F004556A2 /* Rated.entitlements */,
 				D4BDF4ED1D7CD0E4003A3C60 /* AppDelegate.swift */,
 				D4BDF4F71D7CD0E4003A3C60 /* Assets.xcassets */,
 				D4BDF4F91D7CD0E4003A3C60 /* LaunchScreen.storyboard */,
@@ -160,7 +162,13 @@
 				TargetAttributes = {
 					D4BDF4E91D7CD0E4003A3C60 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 5X2WDUUBN3;
 						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -379,6 +387,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Rated/Rated.entitlements;
+				DEVELOPMENT_TEAM = 5X2WDUUBN3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Rated",
@@ -399,6 +409,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Rated/Rated.entitlements;
+				DEVELOPMENT_TEAM = 5X2WDUUBN3;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Rated",

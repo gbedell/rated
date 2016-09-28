@@ -24,10 +24,10 @@ class RatingsTableViewController: UITableViewController {
         getUserRatings()
     }
         
-    private struct uiConstants {
+    private struct controllerConstants {
         static let CREATE_RATING_SEGUE = "CreateRating"
         static let VIEW_RATING_SEGUE = "ViewRating"
-        static let GET_USER_RATINGS_URL = "http://localhost:8080/ratings/find-by-rater/"
+        static let GET_USER_RATINGS_URL = "https://ratedrest.herokuapp.com/ratings/rater/"
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,7 +42,7 @@ class RatingsTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == uiConstants.CREATE_RATING_SEGUE {
+        if segue.identifier == controllerConstants.CREATE_RATING_SEGUE {
             var destinationVC = segue.destination
             if let navcon = destinationVC as? UINavigationController {
                 destinationVC = navcon.visibleViewController ?? destinationVC
@@ -50,7 +50,7 @@ class RatingsTableViewController: UITableViewController {
             if let createRatingVC = destinationVC as? CreateRatingViewController {
                 createRatingVC.rater = self.rater
             }
-        } else if segue.identifier == uiConstants.VIEW_RATING_SEGUE {
+        } else if segue.identifier == controllerConstants.VIEW_RATING_SEGUE {
             if let destinationVC = segue.destination as? RatingViewController {
                 let cell = sender as! RatingTableViewCell
                 let ratingName = cell.ratingName.text
@@ -66,7 +66,17 @@ class RatingsTableViewController: UITableViewController {
     private func getUserRatings() {
         // Call REST API to get User Ratings
         if let raterId = rater?.raterId {
-            Alamofire.request(uiConstants.GET_USER_RATINGS_URL + String(raterId))
+            
+            let user = "admin"
+            let password = "899e42fc-8807-442e-8c7b-dc561f0f194a"
+            
+            var headers: HTTPHeaders = [:]
+            
+            if let authorizationHeader = Request.authorizationHeader(user: user, password: password) {
+                headers[authorizationHeader.key] = authorizationHeader.value
+            }
+            
+            Alamofire.request(controllerConstants.GET_USER_RATINGS_URL + String(raterId), headers: headers)
                 .responseJSON { response in
                     switch response.result {
                     case .success(let data):

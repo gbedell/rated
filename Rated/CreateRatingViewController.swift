@@ -46,7 +46,7 @@ class CreateRatingViewController: UIViewController {
                         ]
                 ]
                 // Call Rest API
-                Alamofire.request(uiConstants.CREATE_RATING_URL, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil)
+                Alamofire.request(controllerConstants.CREATE_RATING_URL, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil)
                     .responseJSON { response in
                         switch response.result {
                         case .success(let data):
@@ -79,8 +79,8 @@ class CreateRatingViewController: UIViewController {
         return round(value * divisor) / divisor
     }
     
-    fileprivate struct uiConstants {
-        static let CREATE_RATING_URL = "http://localhost:8080/ratings"
+    fileprivate struct controllerConstants {
+        static let CREATE_RATING_URL = "https://ratedrest.herokuapp.com/ratings"
     }
     
     
