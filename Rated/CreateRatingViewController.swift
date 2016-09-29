@@ -46,19 +46,19 @@ class CreateRatingViewController: UIViewController {
                     "raterId" : raterId
                 ]
             ]
-                print("Params == \(params)")
-                // Call Rest API
+            print("Params == \(params)")
+            // Call Rest API
                 
-                // Basic Auth
-                let user = "admin"
-                let password = "899e42fc-8807-442e-8c7b-dc561f0f194a"
-                
-                var headers: HTTPHeaders = [:]
-                
-                if let authorizationHeader = Request.authorizationHeader(user: user, password: password) {
-                    headers[authorizationHeader.key] = authorizationHeader.value
-                }
-                
+            // Basic Auth
+            let user = "admin"
+            let password = "899e42fc-8807-442e-8c7b-dc561f0f194a"
+            
+            var headers: HTTPHeaders = [:]
+            
+            if let authorizationHeader = Request.authorizationHeader(user: user, password: password) {
+                headers[authorizationHeader.key] = authorizationHeader.value
+            }
+            
             Alamofire.request(controllerConstants.CREATE_RATING_URL, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers)
                     .responseJSON { response in
                         switch response.result {
@@ -72,7 +72,6 @@ class CreateRatingViewController: UIViewController {
                 }
             }
         self.dismiss(animated: true, completion: nil)
-
     }
     
     override func viewDidLoad() {

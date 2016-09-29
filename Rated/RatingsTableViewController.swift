@@ -22,6 +22,10 @@ class RatingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         // Fetch user's ratings
         getUserRatings()
+        
+        self.refreshControl?.addTarget(self, action: #selector(RatingsTableViewController.handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
+        
+        
     }
         
     private struct controllerConstants {
@@ -97,6 +101,13 @@ class RatingsTableViewController: UITableViewController {
                     }
             }
         }
+    }
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        self.ratings.removeAll()
+        getUserRatings()
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     
