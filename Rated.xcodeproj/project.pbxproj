@@ -10,7 +10,6 @@
 		D40334EF1D810D5900051DE9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40334EE1D810D5900051DE9 /* LoginViewController.swift */; };
 		D410C4F21D8DD80B00A15EED /* Rater.swift in Sources */ = {isa = PBXBuildFile; fileRef = D410C4F11D8DD80B00A15EED /* Rater.swift */; };
 		D462F7881D8E4662006CBCF9 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462F7871D8E4662006CBCF9 /* Rating.swift */; };
-		D462F78A1D8E4EB9006CBCF9 /* RatingRestForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462F7891D8E4EB9006CBCF9 /* RatingRestForm.swift */; };
 		D4BDF4EE1D7CD0E4003A3C60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF4ED1D7CD0E4003A3C60 /* AppDelegate.swift */; };
 		D4BDF4F31D7CD0E4003A3C60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4BDF4F11D7CD0E4003A3C60 /* Main.storyboard */; };
 		D4BDF4F81D7CD0E4003A3C60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4BDF4F71D7CD0E4003A3C60 /* Assets.xcassets */; };
@@ -29,7 +28,6 @@
 		D40334EE1D810D5900051DE9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D410C4F11D8DD80B00A15EED /* Rater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rater.swift; sourceTree = "<group>"; };
 		D462F7871D8E4662006CBCF9 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
-		D462F7891D8E4EB9006CBCF9 /* RatingRestForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingRestForm.swift; sourceTree = "<group>"; };
 		D4BDF4EA1D7CD0E4003A3C60 /* Rated.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rated.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4BDF4ED1D7CD0E4003A3C60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4BDF4F21D7CD0E4003A3C60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -68,7 +66,6 @@
 			children = (
 				D410C4F11D8DD80B00A15EED /* Rater.swift */,
 				D462F7871D8E4662006CBCF9 /* Rating.swift */,
-				D462F7891D8E4EB9006CBCF9 /* RatingRestForm.swift */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -260,7 +257,6 @@
 				D4D1DC9B1D7DB84B00953494 /* RatingTableViewCell.swift in Sources */,
 				D4D1DC9D1D7E436800953494 /* RatingViewController.swift in Sources */,
 				D4BDF5041D7CD1F1003A3C60 /* RatingsTableViewController.swift in Sources */,
-				D462F78A1D8E4EB9006CBCF9 /* RatingRestForm.swift in Sources */,
 				D410C4F21D8DD80B00A15EED /* Rater.swift in Sources */,
 				D462F7881D8E4662006CBCF9 /* Rating.swift in Sources */,
 				D40334EF1D810D5900051DE9 /* LoginViewController.swift in Sources */,

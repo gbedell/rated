@@ -97,14 +97,14 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
                             let json = JSON(data)
                             let username = json["username"].stringValue
                             let email = json["email"].stringValue
-                            let userId = json["userId"].intValue
+                            let raterId = json["raterId"].intValue
                             let facebookId = json["facebookId"].intValue
                             
                             let user = Rater()
                             
                             user.username = username
                             user.email = email
-                            user.raterId = userId
+                            user.raterId = raterId
                             user.facebookId = facebookId
                             
                             self.rater = user

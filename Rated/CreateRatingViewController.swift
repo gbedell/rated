@@ -29,24 +29,37 @@ class CreateRatingViewController: UIViewController {
     @IBAction func dismissModal(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+
     @IBAction func createRating(_ sender: UIBarButtonItem) {
         // Call REST API for Creating Rating
         if let existingRater = self.rater {
-            if let ratingName = ratingNameTextField.text {
-                let ratingScore = roundToPlaces(Double(ratingSlider.value), decimalPlaces: 1)
-                let raterId = existingRater.raterId
-                let facebookId = existingRater.facebookId
-                let params: Parameters = [
-                        "name": ratingName,
-                        "score": ratingScore,
-                        "rater": [
-                            "raterId": raterId,
-                            "facebookId": facebookId
-                        ]
+            let ratingName = ratingNameTextField.text!
+            print("RATING NAME: \(ratingName)")
+            let ratingScore = roundToPlaces(Double(ratingSlider.value), decimalPlaces: 1)
+            print("RATING SCORE: \(ratingScore)")
+            let raterId = existingRater.raterId!
+            print("Rater Id: \(raterId)")
+            let params: Parameters = [
+                "name": ratingName,
+                "score" :ratingScore,
+                "rater" : [
+                    "raterId" : raterId
                 ]
+            ]
+                print("Params == \(params)")
                 // Call Rest API
-                Alamofire.request(controllerConstants.CREATE_RATING_URL, method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil)
+                
+                // Basic Auth
+                let user = "admin"
+                let password = "899e42fc-8807-442e-8c7b-dc561f0f194a"
+                
+                var headers: HTTPHeaders = [:]
+                
+                if let authorizationHeader = Request.authorizationHeader(user: user, password: password) {
+                    headers[authorizationHeader.key] = authorizationHeader.value
+                }
+                
+            Alamofire.request(controllerConstants.CREATE_RATING_URL, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers)
                     .responseJSON { response in
                         switch response.result {
                         case .success(let data):
@@ -58,8 +71,8 @@ class CreateRatingViewController: UIViewController {
                         }
                 }
             }
-        }
         self.dismiss(animated: true, completion: nil)
+
     }
     
     override func viewDidLoad() {

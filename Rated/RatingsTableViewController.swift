@@ -88,7 +88,7 @@ class RatingsTableViewController: UITableViewController {
                                 rating.ratingId = r["ratingId"].intValue
                                 rating.name = r["name"].stringValue
                                 rating.score = r["score"].doubleValue
-                                rating.raterId = r["rater"]["userId"].intValue
+                                rating.raterId = r["rater"]["raterId"].intValue
                                 self.ratings.append(rating)
                             }
                         }
