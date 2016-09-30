@@ -40,8 +40,6 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
         if let accessToken = self.accessToken {
             print("Access token: \(accessToken)")
             returnUserData()
-        } else {
-            print("No access token")
         }
     }
     
@@ -125,7 +123,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
             if let navcon = destinationVC as? UINavigationController {
                 destinationVC = navcon.visibleViewController ?? destinationVC
             }
-            if let ratingsTableVC = destinationVC as? RatingsTableViewController {
+            if let ratingsTableVC = destinationVC as? UserRatingsTableViewController {
                 ratingsTableVC.rater = self.rater
             }
         }

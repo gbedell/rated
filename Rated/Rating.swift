@@ -14,6 +14,6 @@ open class Rating {
     var name: String?
     var score: Double?
     var dateCreted: Date?
-    var raterId: Int?
+    var rater: Rater?
     
 }
