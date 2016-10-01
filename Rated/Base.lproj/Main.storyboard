@@ -58,19 +58,23 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vy-bb-BF8">
-                                            <frame key="frameInset" minX="8" minY="8" width="359" height="45"/>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1z-za-HYv">
+                                            <frame key="frameInset" minX="8" minY="32" width="359" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                            <state key="normal" title="Username">
+                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <segue destination="cZV-Sj-yvL" kind="show" identifier="toUserRatingsTable" id="FMQ-we-YeW"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="ratingName" destination="40C-ru-cam" id="deo-yU-BJw"/>
                                     <outlet property="ratingScore" destination="30J-h6-dGC" id="xJV-XF-k6e"/>
-                                    <outlet property="usernameLabel" destination="6vy-bb-BF8" id="UTW-UK-ddU"/>
+                                    <outlet property="usernameButton" destination="a1z-za-HYv" id="dFN-e2-qqP"/>
                                     <segue destination="S7p-iC-geF" kind="show" identifier="ViewRating" id="9gS-2S-MPL"/>
                                 </connections>
                             </tableViewCell>
@@ -81,11 +85,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Rated" id="bV5-Aq-Fq1">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pcG-yV-Gll">
-                            <connections>
-                                <segue destination="c2e-jG-BLo" kind="presentation" identifier="CreateRating" id="h9M-Wb-eFl"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="pcG-yV-Gll"/>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ngy-wK-b63">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -241,6 +241,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kje-b6-idD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1073" y="1073"/>
+        </scene>
+        <!--Rated-->
+        <scene sceneID="yNg-F1-ahZ">
+            <objects>
+                <tableViewController id="cZV-Sj-yvL" customClass="TestUserRatingsTableViewController" customModule="Rated" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="214" sectionHeaderHeight="28" sectionFooterHeight="28" id="2Xd-bz-DU6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RatingCell" rowHeight="214" id="L7A-mf-NKF" customClass="RatingTableViewCell" customModule="Rated" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="214"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L7A-mf-NKF" id="TSx-jO-gJE">
+                                    <frame key="frameInset" width="375" height="213"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5.6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8B2-AG-ezt">
+                                            <frame key="frameInset" minX="8" minY="61" width="111" height="145"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MHx-Ew-duR">
+                                            <frame key="frameInset" minX="127" minY="61" width="240" height="145"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAk-5f-aSP">
+                                            <frame key="frameInset" minX="8" minY="32" width="359" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <state key="normal" title="Username">
+                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="ratingName" destination="MHx-Ew-duR" id="wuC-hk-Q0f"/>
+                                    <outlet property="ratingScore" destination="8B2-AG-ezt" id="g0P-ON-B7i"/>
+                                    <outlet property="usernameButton" destination="TAk-5f-aSP" id="tqK-UX-j1Q"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cZV-Sj-yvL" id="BPJ-VE-TcD"/>
+                            <outlet property="delegate" destination="cZV-Sj-yvL" id="0c1-NQ-GTc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Rated" id="x9s-nf-wpD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="9YK-HF-f9V"/>
+                    </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="xPv-Sh-MNK">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </refreshControl>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DB0-za-mih" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1073" y="-482"/>
         </scene>
     </scenes>
 </document>

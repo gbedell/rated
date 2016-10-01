@@ -17,7 +17,7 @@
 		D4BDF5041D7CD1F1003A3C60 /* UserRatingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF5031D7CD1F1003A3C60 /* UserRatingsTableViewController.swift */; };
 		D4BDF50D1D7CDB2F003A3C60 /* CreateRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF50C1D7CDB2F003A3C60 /* CreateRatingViewController.swift */; };
 		D4C20FE51D9E02B500617E3A /* RatingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C20FE41D9E02B500617E3A /* RatingsTableViewController.swift */; };
-		D4C20FE71D9E0C5700617E3A /* FollowedRatingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C20FE61D9E0C5400617E3A /* FollowedRatingsTableViewController.swift */; };
+		D4C20FE71D9E0C5700617E3A /* TestUserRatingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C20FE61D9E0C5400617E3A /* TestUserRatingsTableViewController.swift */; };
 		D4D1DC9B1D7DB84B00953494 /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1DC9A1D7DB84B00953494 /* RatingTableViewCell.swift */; };
 		D4D1DC9D1D7E436800953494 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1DC9C1D7E436800953494 /* RatingViewController.swift */; };
 		F21F573B6EBD1F94C93B293D /* Pods_Rated.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 351FFEC6968950CDA4FAB1BE /* Pods_Rated.framework */; };
@@ -39,7 +39,7 @@
 		D4BDF5031D7CD1F1003A3C60 /* UserRatingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRatingsTableViewController.swift; sourceTree = "<group>"; };
 		D4BDF50C1D7CDB2F003A3C60 /* CreateRatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRatingViewController.swift; sourceTree = "<group>"; };
 		D4C20FE41D9E02B500617E3A /* RatingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingsTableViewController.swift; sourceTree = "<group>"; };
-		D4C20FE61D9E0C5400617E3A /* FollowedRatingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowedRatingsTableViewController.swift; sourceTree = "<group>"; };
+		D4C20FE61D9E0C5400617E3A /* TestUserRatingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUserRatingsTableViewController.swift; sourceTree = "<group>"; };
 		D4C326B41D98AE1F004556A2 /* Rated.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rated.entitlements; sourceTree = "<group>"; };
 		D4D1DC9A1D7DB84B00953494 /* RatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
 		D4D1DC9C1D7E436800953494 /* RatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
@@ -119,7 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				D4BDF50C1D7CDB2F003A3C60 /* CreateRatingViewController.swift */,
-				D4C20FE61D9E0C5400617E3A /* FollowedRatingsTableViewController.swift */,
+				D4C20FE61D9E0C5400617E3A /* TestUserRatingsTableViewController.swift */,
 				D40334EE1D810D5900051DE9 /* LoginViewController.swift */,
 				D4C20FE41D9E02B500617E3A /* RatingsTableViewController.swift */,
 				D4D1DC9C1D7E436800953494 /* RatingViewController.swift */,
@@ -277,7 +277,7 @@
 			files = (
 				D4BDF4EE1D7CD0E4003A3C60 /* AppDelegate.swift in Sources */,
 				D4D1DC9B1D7DB84B00953494 /* RatingTableViewCell.swift in Sources */,
-				D4C20FE71D9E0C5700617E3A /* FollowedRatingsTableViewController.swift in Sources */,
+				D4C20FE71D9E0C5700617E3A /* TestUserRatingsTableViewController.swift in Sources */,
 				D4D1DC9D1D7E436800953494 /* RatingViewController.swift in Sources */,
 				D4BDF5041D7CD1F1003A3C60 /* UserRatingsTableViewController.swift in Sources */,
 				D410C4F21D8DD80B00A15EED /* Rater.swift in Sources */,

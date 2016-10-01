@@ -16,13 +16,14 @@ class RatingTableViewCell: UITableViewCell {
     
     @IBOutlet weak var ratingName: UILabel!
     
-    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var usernameButton: UIButton!
+    
     
     fileprivate func updateUI() {
         // Reset any UI information
         self.ratingName.text = nil
         self.ratingScore.text = nil
-        self.usernameLabel.text = nil
+        self.usernameButton.setTitle(nil, for: .normal)
         
         // Load new information, if any
         if let rating = self.rating {
@@ -32,7 +33,7 @@ class RatingTableViewCell: UITableViewCell {
                 if let username = rater.username {
                     self.ratingName.text = ratingName
                     self.ratingScore.text = String(ratingScore)
-                    self.usernameLabel.text = username
+                    self.usernameButton.setTitle(username, for: .normal)
                 }
                 
             }

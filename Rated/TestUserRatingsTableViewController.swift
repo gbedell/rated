@@ -6,8 +6,8 @@
 //  Copyright © 2016 Gavin Bedell. All rights reserved.
 //
 
-class FollowedRatingsTableViewController: RatingsTableViewController {
+class TestUserRatingsTableViewController: RatingsTableViewController {
     
-    var tableRatingsType = "follows"
+    
     
 }

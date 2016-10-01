@@ -31,7 +31,9 @@ class UserRatingsTableViewController: UITableViewController {
     private struct controllerConstants {
         static let CREATE_RATING_SEGUE = "CreateRating"
         static let VIEW_RATING_SEGUE = "ViewRating"
+        static let TO_USER_RATINGS_TABLE_SEGUE = "toUserRatingsTable"
         static let GET_USER_RATINGS_URL = "https://ratedrest.herokuapp.com/ratings/rater/"
+        static let GET_USER_RATINGS_BY_USERNAME_URL = "https://ratedrest.herokuapp.com/ratings/rater/username/"
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,6 +65,16 @@ class UserRatingsTableViewController: UITableViewController {
                 destinationVC.ratingName = ratingName
                 destinationVC.ratingScore = ratingScore
                 
+            }
+        } else if segue.identifier == controllerConstants.TO_USER_RATINGS_TABLE_SEGUE {
+            if let destinationVC = segue.destination as? TestUserRatingsTableViewController {
+                let usernameButton = sender as! UIButton
+                let username = usernameButton.currentTitle
+                
+                let ratingsUrl = controllerConstants.GET_USER_RATINGS_BY_USERNAME_URL + username!
+                print("Setting Ratings URL: \(ratingsUrl)")
+                
+                destinationVC.ratingsUrl = ratingsUrl
             }
         }
     }
