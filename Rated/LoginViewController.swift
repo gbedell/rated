@@ -61,6 +61,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
     fileprivate struct controllerConstants {
         static let LOGIN_SUCCESS_SEGUE = "LoginSuccess"
         static let GET_USER_INFO_URL = "https://ratedrest.herokuapp.com/raters/facebook-id/"
+        static let GET_FOLLOWED_RATINGS_URL = "https://ratedrest.herokuapp.com/ratings/follower-rater-id/"
     }
     
     fileprivate func returnUserData() {
@@ -123,8 +124,11 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
             if let navcon = destinationVC as? UINavigationController {
                 destinationVC = navcon.visibleViewController ?? destinationVC
             }
-            if let ratingsTableVC = destinationVC as? UserRatingsTableViewController {
-                ratingsTableVC.rater = self.rater
+            if let ratingsTableVC = destinationVC as? FollowedRatingsTableViewController {
+                if let rater = self.rater {
+                    ratingsTableVC.rater = rater
+                    ratingsTableVC.ratingsUrl = controllerConstants.GET_FOLLOWED_RATINGS_URL + String(rater.raterId!)
+                }
             }
         }
     }

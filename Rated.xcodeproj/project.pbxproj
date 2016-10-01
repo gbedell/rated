@@ -14,12 +14,12 @@
 		D4BDF4F31D7CD0E4003A3C60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4BDF4F11D7CD0E4003A3C60 /* Main.storyboard */; };
 		D4BDF4F81D7CD0E4003A3C60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4BDF4F71D7CD0E4003A3C60 /* Assets.xcassets */; };
 		D4BDF4FB1D7CD0E4003A3C60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4BDF4F91D7CD0E4003A3C60 /* LaunchScreen.storyboard */; };
-		D4BDF5041D7CD1F1003A3C60 /* UserRatingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF5031D7CD1F1003A3C60 /* UserRatingsTableViewController.swift */; };
 		D4BDF50D1D7CDB2F003A3C60 /* CreateRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF50C1D7CDB2F003A3C60 /* CreateRatingViewController.swift */; };
 		D4C20FE51D9E02B500617E3A /* RatingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C20FE41D9E02B500617E3A /* RatingsTableViewController.swift */; };
-		D4C20FE71D9E0C5700617E3A /* TestUserRatingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C20FE61D9E0C5400617E3A /* TestUserRatingsTableViewController.swift */; };
+		D4C20FE71D9E0C5700617E3A /* UserRatingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C20FE61D9E0C5400617E3A /* UserRatingsTableViewController.swift */; };
 		D4D1DC9B1D7DB84B00953494 /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1DC9A1D7DB84B00953494 /* RatingTableViewCell.swift */; };
 		D4D1DC9D1D7E436800953494 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1DC9C1D7E436800953494 /* RatingViewController.swift */; };
+		D4F363841D9F411500F7E418 /* FollowedRatingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F363831D9F411500F7E418 /* FollowedRatingsTableViewController.swift */; };
 		F21F573B6EBD1F94C93B293D /* Pods_Rated.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 351FFEC6968950CDA4FAB1BE /* Pods_Rated.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,13 +36,13 @@
 		D4BDF4F71D7CD0E4003A3C60 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D4BDF4FA1D7CD0E4003A3C60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4BDF4FC1D7CD0E4003A3C60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D4BDF5031D7CD1F1003A3C60 /* UserRatingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRatingsTableViewController.swift; sourceTree = "<group>"; };
 		D4BDF50C1D7CDB2F003A3C60 /* CreateRatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRatingViewController.swift; sourceTree = "<group>"; };
 		D4C20FE41D9E02B500617E3A /* RatingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingsTableViewController.swift; sourceTree = "<group>"; };
-		D4C20FE61D9E0C5400617E3A /* TestUserRatingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUserRatingsTableViewController.swift; sourceTree = "<group>"; };
+		D4C20FE61D9E0C5400617E3A /* UserRatingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRatingsTableViewController.swift; sourceTree = "<group>"; };
 		D4C326B41D98AE1F004556A2 /* Rated.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rated.entitlements; sourceTree = "<group>"; };
 		D4D1DC9A1D7DB84B00953494 /* RatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
 		D4D1DC9C1D7E436800953494 /* RatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
+		D4F363831D9F411500F7E418 /* FollowedRatingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowedRatingsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,11 +119,11 @@
 			isa = PBXGroup;
 			children = (
 				D4BDF50C1D7CDB2F003A3C60 /* CreateRatingViewController.swift */,
-				D4C20FE61D9E0C5400617E3A /* TestUserRatingsTableViewController.swift */,
+				D4F363831D9F411500F7E418 /* FollowedRatingsTableViewController.swift */,
 				D40334EE1D810D5900051DE9 /* LoginViewController.swift */,
 				D4C20FE41D9E02B500617E3A /* RatingsTableViewController.swift */,
 				D4D1DC9C1D7E436800953494 /* RatingViewController.swift */,
-				D4BDF5031D7CD1F1003A3C60 /* UserRatingsTableViewController.swift */,
+				D4C20FE61D9E0C5400617E3A /* UserRatingsTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -277,9 +277,9 @@
 			files = (
 				D4BDF4EE1D7CD0E4003A3C60 /* AppDelegate.swift in Sources */,
 				D4D1DC9B1D7DB84B00953494 /* RatingTableViewCell.swift in Sources */,
-				D4C20FE71D9E0C5700617E3A /* TestUserRatingsTableViewController.swift in Sources */,
+				D4C20FE71D9E0C5700617E3A /* UserRatingsTableViewController.swift in Sources */,
 				D4D1DC9D1D7E436800953494 /* RatingViewController.swift in Sources */,
-				D4BDF5041D7CD1F1003A3C60 /* UserRatingsTableViewController.swift in Sources */,
+				D4F363841D9F411500F7E418 /* FollowedRatingsTableViewController.swift in Sources */,
 				D410C4F21D8DD80B00A15EED /* Rater.swift in Sources */,
 				D4C20FE51D9E02B500617E3A /* RatingsTableViewController.swift in Sources */,
 				D462F7881D8E4662006CBCF9 /* Rating.swift in Sources */,
