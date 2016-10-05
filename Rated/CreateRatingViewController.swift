@@ -75,6 +75,7 @@ class CreateRatingViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         createRatingButton.isEnabled = false
     }
     

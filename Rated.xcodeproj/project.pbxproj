@@ -109,7 +109,6 @@
 				D4C326B41D98AE1F004556A2 /* Rated.entitlements */,
 				D4BDF4ED1D7CD0E4003A3C60 /* AppDelegate.swift */,
 				D4BDF4F71D7CD0E4003A3C60 /* Assets.xcassets */,
-				D4BDF4F91D7CD0E4003A3C60 /* LaunchScreen.storyboard */,
 				D4BDF4FC1D7CD0E4003A3C60 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -132,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				D4BDF4F11D7CD0E4003A3C60 /* Main.storyboard */,
+				D4BDF4F91D7CD0E4003A3C60 /* LaunchScreen.storyboard */,
 				D4D1DC9A1D7DB84B00953494 /* RatingTableViewCell.swift */,
 			);
 			name = UI;

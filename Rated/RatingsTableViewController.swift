@@ -36,6 +36,8 @@ class RatingsTableViewController: UITableViewController {
     
     // Mark: - Lifecycle Methods
     override func viewDidLoad() {
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
         // Fetch Ratings
         fetchRatings()
         

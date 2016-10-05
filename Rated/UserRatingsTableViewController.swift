@@ -6,6 +6,14 @@
 //  Copyright © 2016 Gavin Bedell. All rights reserved.
 //
 
+import UIKit
+
 class UserRatingsTableViewController: RatingsTableViewController {
+
+    var username: String? {
+        didSet {
+            self.title = username
+        }
+    }
     
 }

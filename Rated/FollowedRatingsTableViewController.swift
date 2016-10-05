@@ -46,6 +46,7 @@ class FollowedRatingsTableViewController: RatingsTableViewController {
                 print("Setting Ratings URL: \(ratingsUrl)")
                 
                 destinationVC.ratingsUrl = ratingsUrl
+                destinationVC.username = username
             }
         }
     }
