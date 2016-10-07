@@ -12,18 +12,26 @@ class RatingTableViewCell: UITableViewCell {
     
     var rating: Rating? { didSet { updateUI() } }
     
-    @IBOutlet weak var ratingScore: UILabel!
-    
-    @IBOutlet weak var ratingName: UILabel!
+    @IBOutlet weak var userImageView: UIImageView!
     
     @IBOutlet weak var usernameButton: UIButton!
     
+    @IBOutlet weak var ratingScoreLabel: UILabel!
+    
+    @IBOutlet weak var ratingNameLabel: UILabel!
+    
+    @IBOutlet weak var ratingReviewLabel: UILabel!
+    
+    @IBOutlet weak var ratingImageView: UIImageView!
     
     fileprivate func updateUI() {
         // Reset any UI information
-        self.ratingName.text = nil
-        self.ratingScore.text = nil
-        self.usernameButton.setTitle(nil, for: .normal)
+        userImageView.image = nil
+        usernameButton.setTitle(nil, for: .normal)
+        ratingScoreLabel.text = nil
+        ratingNameLabel.text = nil
+        //ratingReviewLabel.text = nil
+        //ratingImageView.image = nil
         
         // Load new information, if any
         if let rating = self.rating {
@@ -31,9 +39,9 @@ class RatingTableViewCell: UITableViewCell {
                 let ratingScore = rating.score,
                 let rater = rating.rater {
                 if let username = rater.username {
-                    self.ratingName.text = ratingName
-                    self.ratingScore.text = String(ratingScore)
-                    self.usernameButton.setTitle(username, for: .normal)
+                    ratingScoreLabel.text = String(ratingScore)
+                    ratingNameLabel.text = ratingName
+                    usernameButton.setTitle(username, for: .normal)
                 }
                 
             }

@@ -124,7 +124,7 @@ class LoginViewController: UIViewController, LoginButtonDelegate {
             if let navcon = destinationVC as? UINavigationController {
                 destinationVC = navcon.visibleViewController ?? destinationVC
             }
-            if let ratingsTableVC = destinationVC as? FollowedRatingsTableViewController {
+            if let ratingsTableVC = destinationVC as? FollowedRatingsViewController {
                 if let rater = self.rater {
                     ratingsTableVC.rater = rater
                     ratingsTableVC.ratingsUrl = controllerConstants.GET_FOLLOWED_RATINGS_URL + String(rater.raterId!)

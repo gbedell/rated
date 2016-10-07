@@ -1,8 +1,8 @@
 //
-//  RatingsTableViewController.swift
+//  RatingsViewController.swift
 //  Rated
 //
-//  Created by Gavin Bedell on 9/29/16.
+//  Created by Gavin Bedell on 10/6/16.
 //  Copyright © 2016 Gavin Bedell. All rights reserved.
 //
 
@@ -10,9 +10,12 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class RatingsTableViewController: UITableViewController {
+class RatingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    // Mark: - Model
+    //============================================
+    // Model
+    //============================================
+    
     var rater: Rater?
     
     var ratings = Array<Rating>() {
@@ -21,31 +24,59 @@ class RatingsTableViewController: UITableViewController {
     
     var ratingsUrl: String?
     
-    // Mark: - TableView DataSource Methods
+    //============================================
+    // IB Outlets
+    //============================================
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    @IBOutlet weak var tableView: UITableView!
+    
+    //============================================
+    // Tableview Methods
+    //============================================
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ratings.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> RatingTableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RatingCell", for: indexPath) as! RatingTableViewCell
         let rating = self.ratings[indexPath.row]
         cell.rating = rating
         return cell
     }
     
-    // Mark: - Lifecycle Methods
+    //============================================
+    // Lifecycle Methods
+    //============================================
+    
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
         // Fetch Ratings
         fetchRatings()
         
         // Refresh Control
-        refreshControl?.addTarget(self, action: #selector(handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(refreshControl:)), for: UIControlEvents.valueChanged)
+        tableView.addSubview(refreshControl)
     }
     
-    // Mark: - Private Functions
+    //============================================
+    // IB Actions
+    //============================================
+    
+    @IBAction func createRating(_ sender: UIButton) {
+        
+    }
+    
+    //============================================
+    // Public Functions
+    //============================================
     func handleRefresh(refreshControl: UIRefreshControl) {
         ratings.removeAll()
         fetchRatings()
@@ -53,8 +84,10 @@ class RatingsTableViewController: UITableViewController {
         refreshControl.endRefreshing()
     }
     
+    //============================================
+    // Private Functions
+    //============================================
     private func fetchRatings() {
-        
         // Basic Auth
         let user = "admin"
         let password = "899e42fc-8807-442e-8c7b-dc561f0f194a"
@@ -98,5 +131,5 @@ class RatingsTableViewController: UITableViewController {
             }
         }
     }
-    
+
 }

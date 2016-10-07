@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserRatingsTableViewController: RatingsTableViewController {
+class UserProfileViewController: RatingsViewController {
 
     var username: String? {
         didSet {

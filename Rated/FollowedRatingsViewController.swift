@@ -1,14 +1,19 @@
 //
-//  FollowedRatingsTableViewController.swift
+//  FollowedRatingsViewController.swift
 //  Rated
 //
-//  Created by Gavin Bedell on 9/30/16.
+//  Created by Gavin Bedell on 10/6/16.
 //  Copyright © 2016 Gavin Bedell. All rights reserved.
 //
 
 import UIKit
 
-class FollowedRatingsTableViewController: RatingsTableViewController {
+class FollowedRatingsViewController: RatingsViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "Rated"
+    }
     
     private struct controllerConstants {
         static let CREATE_RATING_SEGUE = "toCreateRatingView"
@@ -30,25 +35,24 @@ class FollowedRatingsTableViewController: RatingsTableViewController {
         } else if segue.identifier == controllerConstants.VIEW_RATING_SEGUE {
             if let destinationVC = segue.destination as? RatingViewController {
                 let cell = sender as! RatingTableViewCell
-                let ratingName = cell.ratingName.text
-                let ratingScore = cell.ratingScore.text
+                let ratingName = cell.ratingNameLabel.text
+                let ratingScore = cell.ratingScoreLabel.text
                 
                 destinationVC.ratingName = ratingName
                 destinationVC.ratingScore = ratingScore
                 
             }
         } else if segue.identifier == controllerConstants.TO_USER_RATINGS_TABLE_SEGUE {
-            if let destinationVC = segue.destination as? UserRatingsTableViewController {
+            if let destinationVC = segue.destination as? UserProfileViewController {
                 let usernameButton = sender as! UIButton
                 let username = usernameButton.currentTitle
                 
                 let ratingsUrl = controllerConstants.GET_USER_RATINGS_BY_USERNAME_URL + username!
-                print("Setting Ratings URL: \(ratingsUrl)")
                 
                 destinationVC.ratingsUrl = ratingsUrl
                 destinationVC.username = username
             }
         }
     }
-    
+
 }
