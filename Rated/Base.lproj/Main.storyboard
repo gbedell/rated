@@ -97,7 +97,7 @@
         <!--Navigation Controller-->
         <scene sceneID="dLQ-rO-jTb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r8z-EX-nLI" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="r8z-EX-nLI" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tw9-2V-vWx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -108,6 +108,10 @@
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="lyM-2F-hfy">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="VHo-Hd-WFe" kind="relationship" relationship="rootViewController" id="QbN-71-hWS"/>
                     </connections>
@@ -154,7 +158,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="217"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MqX-DL-cZH" id="E1t-1H-N9N">
-                                            <frame key="frameInset" width="375" height="216"/>
+                                            <frame key="frameInset" width="375" height="217"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9T3-tt-75R">
@@ -206,30 +210,25 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uf-wg-wPn">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="83" id="Epx-jP-9qc"/>
-                                    <constraint firstAttribute="height" constant="60" id="xUW-5o-8Jp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Rate">
-                                    <color key="titleColor" red="1" green="0.44528013189999999" blue="0.25093931860000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="createRating:" destination="xHk-By-Ee5" eventType="touchUpInside" id="Wyk-F2-KWA"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="H0V-OZ-bo7" firstAttribute="top" secondItem="VIL-ls-fnC" secondAttribute="topMargin" constant="28" id="K4k-kS-dNn"/>
-                            <constraint firstItem="H0V-OZ-bo7" firstAttribute="centerX" secondItem="6uf-wg-wPn" secondAttribute="centerX" id="dEQ-wB-PrD"/>
-                            <constraint firstItem="H0V-OZ-bo7" firstAttribute="leading" secondItem="VIL-ls-fnC" secondAttribute="leading" id="hje-yk-Owi"/>
-                            <constraint firstItem="3mY-k9-a0J" firstAttribute="top" secondItem="6uf-wg-wPn" secondAttribute="bottom" constant="8" symbolic="YES" id="mNf-Pj-RlV"/>
-                            <constraint firstAttribute="trailing" secondItem="H0V-OZ-bo7" secondAttribute="trailing" id="oiO-64-gqg"/>
-                            <constraint firstItem="6uf-wg-wPn" firstAttribute="top" secondItem="H0V-OZ-bo7" secondAttribute="bottom" constant="37" id="piT-YN-FcK"/>
+                            <constraint firstItem="H0V-OZ-bo7" firstAttribute="bottom" secondItem="3mY-k9-a0J" secondAttribute="top" id="08w-Dd-M6R"/>
+                            <constraint firstItem="H0V-OZ-bo7" firstAttribute="top" secondItem="VIL-ls-fnC" secondAttribute="topMargin" constant="28" id="iel-fj-vs9"/>
+                            <constraint firstAttribute="trailing" secondItem="H0V-OZ-bo7" secondAttribute="trailing" id="wcS-hW-pgo"/>
+                            <constraint firstItem="H0V-OZ-bo7" firstAttribute="leading" secondItem="VIL-ls-fnC" secondAttribute="leading" id="yQa-UF-Mvd"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="sdW-Iy-yWW"/>
+                        <barButtonItem title="Rate" id="iKm-in-zbr">
+                            <color key="tintColor" red="1" green="0.44528013189999999" blue="0.25093931860000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="c2e-jG-BLo" kind="presentation" identifier="toCreateRatingView" id="sZD-j1-69t"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Lex-K8-Ya6"/>
+                    </toolbarItems>
                     <connections>
                         <outlet property="tableView" destination="H0V-OZ-bo7" id="5hM-j0-d27"/>
                     </connections>
@@ -257,7 +256,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="206"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KKG-xy-OH0" id="7pt-IW-2WN">
-                                            <frame key="frameInset" width="375" height="205"/>
+                                            <frame key="frameInset" width="375" height="206"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oIl-KQ-7tp">
@@ -312,31 +311,25 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOZ-7I-r2h">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="WIi-tk-9YF"/>
-                                    <constraint firstAttribute="width" constant="83" id="mLL-Cb-dEJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Rate">
-                                    <color key="titleColor" red="1" green="0.44528013189999999" blue="0.25093931860000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="createRating:" destination="VHo-Hd-WFe" eventType="touchUpInside" id="KNY-y2-ild"/>
-                                    <segue destination="c2e-jG-BLo" kind="presentation" identifier="toCreateRatingView" id="rcw-co-7tc"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="oBA-zK-PUH" firstAttribute="leading" secondItem="CuZ-hn-8e2" secondAttribute="leading" id="8yc-7F-ggQ"/>
-                            <constraint firstAttribute="trailing" secondItem="oBA-zK-PUH" secondAttribute="trailing" id="Ibj-vn-A1u"/>
-                            <constraint firstItem="5Eq-5G-fKq" firstAttribute="top" secondItem="AOZ-7I-r2h" secondAttribute="bottom" constant="8" symbolic="YES" id="ldd-lV-Zjr"/>
-                            <constraint firstItem="oBA-zK-PUH" firstAttribute="centerX" secondItem="AOZ-7I-r2h" secondAttribute="centerX" id="mAH-D3-qf0"/>
-                            <constraint firstItem="oBA-zK-PUH" firstAttribute="top" secondItem="CuZ-hn-8e2" secondAttribute="topMargin" constant="28" id="p3O-Og-9Fa"/>
-                            <constraint firstItem="AOZ-7I-r2h" firstAttribute="top" secondItem="oBA-zK-PUH" secondAttribute="bottom" constant="37" id="z71-88-6Hp"/>
+                            <constraint firstItem="oBA-zK-PUH" firstAttribute="top" secondItem="CuZ-hn-8e2" secondAttribute="topMargin" constant="28" id="3au-bW-yRm"/>
+                            <constraint firstItem="oBA-zK-PUH" firstAttribute="leading" secondItem="CuZ-hn-8e2" secondAttribute="leading" id="RQv-yP-pN5"/>
+                            <constraint firstAttribute="trailing" secondItem="oBA-zK-PUH" secondAttribute="trailing" id="llA-TH-cAy"/>
+                            <constraint firstItem="oBA-zK-PUH" firstAttribute="bottom" secondItem="5Eq-5G-fKq" secondAttribute="top" id="wy6-C5-IJG"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="8L0-fm-0Gs"/>
+                        <barButtonItem title="Rate" id="WJN-sV-56n">
+                            <color key="tintColor" red="1" green="0.44528013189999999" blue="0.25093931860000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="c2e-jG-BLo" kind="presentation" identifier="toCreateRatingView" id="xm9-sC-iTo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="pmo-pU-Cla"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="Tgn-su-8gY"/>
                     <connections>
                         <outlet property="tableView" destination="oBA-zK-PUH" id="lrK-iI-WrC"/>
@@ -347,4 +340,7 @@
             <point key="canvasLocation" x="1028" y="328.78560719640183"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="sZD-j1-69t"/>
+    </inferredMetricsTieBreakers>
 </document>

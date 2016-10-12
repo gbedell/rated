@@ -87,6 +87,15 @@ class RatingsViewController: UIViewController, UITableViewDelegate, UITableViewD
     //============================================
     // Private Functions
     //============================================
+    
+    struct controllerConstants {
+        static let CREATE_RATING_SEGUE = "toCreateRatingView"
+        static let VIEW_RATING_SEGUE = "toViewRatingView"
+        static let TO_USER_RATINGS_TABLE_SEGUE = "toUserRatingsTable"
+        static let GET_USER_RATINGS_URL = "https://ratedrest.herokuapp.com/ratings/rater/"
+        static let GET_USER_RATINGS_BY_USERNAME_URL = "https://ratedrest.herokuapp.com/ratings/rater/username/"
+    }
+    
     private func fetchRatings() {
         // Basic Auth
         let user = "admin"

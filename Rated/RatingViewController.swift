@@ -16,7 +16,6 @@ class RatingViewController: UIViewController {
     // Mark - Outlets
     @IBOutlet weak var ratingScoreLabel: UILabel! { didSet { ratingScoreLabel.text = ratingScore } }
     @IBOutlet weak var ratingNameLabel: UILabel! { didSet { ratingNameLabel.text = ratingName } }
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()

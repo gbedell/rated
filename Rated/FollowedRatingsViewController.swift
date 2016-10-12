@@ -15,14 +15,6 @@ class FollowedRatingsViewController: RatingsViewController {
         self.title = "Rated"
     }
     
-    private struct controllerConstants {
-        static let CREATE_RATING_SEGUE = "toCreateRatingView"
-        static let VIEW_RATING_SEGUE = "toViewRatingView"
-        static let TO_USER_RATINGS_TABLE_SEGUE = "toUserRatingsTable"
-        static let GET_USER_RATINGS_URL = "https://ratedrest.herokuapp.com/ratings/rater/"
-        static let GET_USER_RATINGS_BY_USERNAME_URL = "https://ratedrest.herokuapp.com/ratings/rater/username/"
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == controllerConstants.CREATE_RATING_SEGUE {
             var destinationVC = segue.destination
@@ -43,7 +35,8 @@ class FollowedRatingsViewController: RatingsViewController {
                 
             }
         } else if segue.identifier == controllerConstants.TO_USER_RATINGS_TABLE_SEGUE {
-            if let destinationVC = segue.destination as? UserProfileViewController {
+            if let destinationVC = segue.destination as? UserProfileViewController,
+                let rater = rater {
                 let usernameButton = sender as! UIButton
                 let username = usernameButton.currentTitle
                 
@@ -51,6 +44,8 @@ class FollowedRatingsViewController: RatingsViewController {
                 
                 destinationVC.ratingsUrl = ratingsUrl
                 destinationVC.username = username
+                destinationVC.rater = rater
+                
             }
         }
     }
