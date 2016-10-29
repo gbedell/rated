@@ -7,8 +7,21 @@
 //
 
 import UIKit
+import Firebase
 
-class FollowedRatingsViewController: RatingsViewController {
+class FollowedRatingsViewController: UIViewController {
+    
+    var rater: Rater?
+    
+    let ref = FIRDatabase.database().reference(withPath: "grocery-items")
+    
+    struct controllerConstants {
+        static let CREATE_RATING_SEGUE = "toCreateRatingView"
+        static let VIEW_RATING_SEGUE = "toViewRatingView"
+        static let TO_USER_RATINGS_TABLE_SEGUE = "toUserRatingsTable"
+        static let GET_USER_RATINGS_URL = "https://ratedrest.herokuapp.com/ratings/rater/"
+        static let GET_USER_RATINGS_BY_USERNAME_URL = "https://ratedrest.herokuapp.com/ratings/rater/username/"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

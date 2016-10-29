@@ -9,6 +9,7 @@ target 'Rated' do
   pod 'FacebookShare'
   pod 'SwiftyJSON'
   pod 'Firebase/Core'
+  pod 'Firebase/Database'
 
   # Pods for Rated
 
