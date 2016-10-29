@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="G4d-Tj-qvH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ggV-Ax-nX0">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -7,27 +7,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
-        <scene sceneID="1QA-Of-SMV">
-            <objects>
-                <viewController id="G4d-Tj-qvH" customClass="LoginViewController" customModule="Rated" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="iyR-rf-28m"/>
-                        <viewControllerLayoutGuide type="bottom" id="fUb-n1-Pq3"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xhu-3q-g5c">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <connections>
-                        <segue destination="r8z-EX-nLI" kind="show" identifier="LoginSuccess" id="Tfw-kd-Pdo"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="plc-t6-dn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-457" y="329"/>
-        </scene>
         <!--Create Rating View Controller-->
         <scene sceneID="Vqh-0h-3fk">
             <objects>
@@ -92,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="01v-TD-d1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2662" y="329"/>
+            <point key="canvasLocation" x="3600.8000000000002" y="328.78560719640183"/>
         </scene>
         <!--Create Rating Details View Controller-->
         <scene sceneID="dJu-2W-AjN">
@@ -162,33 +141,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wMP-Yx-rIN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3439.1999999999998" y="328.78560719640183"/>
+            <point key="canvasLocation" x="4378.3999999999996" y="328.78560719640183"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="dLQ-rO-jTb">
+        <!--Login View Controller-->
+        <scene sceneID="5uj-qs-o1U">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="r8z-EX-nLI" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tw9-2V-vWx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="1" green="0.44528013189999999" blue="0.25093931860000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="lyM-2F-hfy">
-                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
+                <viewController id="bcH-FY-dKt" customClass="LoginViewController" customModule="Rated" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mUS-RA-cx9"/>
+                        <viewControllerLayoutGuide type="bottom" id="rDa-cS-Ecw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mUs-CP-1ek">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nXR-Iv-tS8"/>
                     <connections>
-                        <segue destination="VHo-Hd-WFe" kind="relationship" relationship="rootViewController" id="QbN-71-hWS"/>
+                        <segue destination="VHo-Hd-WFe" kind="show" identifier="toRatingsTableViewController" id="24M-Sb-vW1"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kCu-BG-kw4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ttu-TS-1Bb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="261" y="329"/>
+            <point key="canvasLocation" x="1112.8" y="328.78560719640183"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="d4a-uB-a1l">
@@ -207,7 +182,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOc-nQ-cKY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1855" y="329"/>
+            <point key="canvasLocation" x="2792.8000000000002" y="328.78560719640183"/>
         </scene>
         <!--User Profile View Controller-->
         <scene sceneID="gzm-gZ-nO5">
@@ -307,10 +282,10 @@
             </objects>
             <point key="canvasLocation" x="2346.4000000000001" y="-437.63118440779613"/>
         </scene>
-        <!--Followed Ratings View Controller-->
+        <!--Ratings Table View Controller-->
         <scene sceneID="Fip-0q-DVC">
             <objects>
-                <viewController id="VHo-Hd-WFe" customClass="FollowedRatingsViewController" customModule="Rated" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VHo-Hd-WFe" customClass="RatingsTableViewController" customModule="Rated" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b9f-jm-T0z"/>
                         <viewControllerLayoutGuide type="bottom" id="5Eq-5G-fKq"/>
@@ -407,7 +382,33 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fpp-yL-IJw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1028" y="328.78560719640183"/>
+            <point key="canvasLocation" x="1967.2" y="328.78560719640183"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NN0-Jo-7fT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="ggV-Ax-nX0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="U12-E8-GfB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.96862745100000003" green="0.4431372549" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="DxA-GU-Nm2">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="bcH-FY-dKt" kind="relationship" relationship="rootViewController" id="8Li-iO-8XR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="smj-sa-o6O" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="173.59999999999999" y="328.78560719640183"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

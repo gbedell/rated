@@ -13,19 +13,22 @@ class FollowedRatingsViewController: UIViewController {
     
     var rater: Rater?
     
+    var ratings: [Rating] = []
+    
     let ref = FIRDatabase.database().reference(withPath: "grocery-items")
     
     struct controllerConstants {
         static let CREATE_RATING_SEGUE = "toCreateRatingView"
         static let VIEW_RATING_SEGUE = "toViewRatingView"
         static let TO_USER_RATINGS_TABLE_SEGUE = "toUserRatingsTable"
-        static let GET_USER_RATINGS_URL = "https://ratedrest.herokuapp.com/ratings/rater/"
-        static let GET_USER_RATINGS_BY_USERNAME_URL = "https://ratedrest.herokuapp.com/ratings/rater/username/"
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         self.title = "Rated"
+        
+        ref.observe(.value, with: { snapshot in
+            print(snapshot.value)
+        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,9 +56,9 @@ class FollowedRatingsViewController: UIViewController {
                 let usernameButton = sender as! UIButton
                 let username = usernameButton.currentTitle
                 
-                let ratingsUrl = controllerConstants.GET_USER_RATINGS_BY_USERNAME_URL + username!
+                //let ratingsUrl = controllerConstants.GET_USER_RATINGS_BY_USERNAME_URL + username!
                 
-                destinationVC.ratingsUrl = ratingsUrl
+                //destinationVC.ratingsUrl = ratingsUrl
                 destinationVC.username = username
                 destinationVC.rater = rater
                 

@@ -38,11 +38,11 @@ class RatingTableViewCell: UITableViewCell {
             if let ratingName = rating.name,
                 let ratingScore = rating.score,
                 let rater = rating.rater {
-                if let username = rater.username {
-                    ratingScoreLabel.text = String(ratingScore)
-                    ratingNameLabel.text = ratingName
-                    usernameButton.setTitle(username, for: .normal)
-                }
+//                if let username = rater.username {
+//                    ratingScoreLabel.text = String(ratingScore)
+//                    ratingNameLabel.text = ratingName
+//                    usernameButton.setTitle(username, for: .normal)
+//                }
                 
             }
         }

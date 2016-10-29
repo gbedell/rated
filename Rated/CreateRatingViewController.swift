@@ -61,9 +61,9 @@ class CreateRatingViewController: UIViewController {
                 let rater = rater {
                 destinationVC.rater = rater
                 
-                let rating = Rating()
-                rating.name = ratingNameTextField.text
-                rating.score = roundToPlaces(Double(ratingSlider.value), decimalPlaces: 1)
+//                let rating = Rating()
+//                rating.name = ratingNameTextField.text
+//                rating.score = roundToPlaces(Double(ratingSlider.value), decimalPlaces: 1)
                 
             }
         }
