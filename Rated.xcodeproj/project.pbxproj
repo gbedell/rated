@@ -20,6 +20,7 @@
 		D4C20FE71D9E0C5700617E3A /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C20FE61D9E0C5400617E3A /* UserProfileViewController.swift */; };
 		D4D1DC9B1D7DB84B00953494 /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1DC9A1D7DB84B00953494 /* RatingTableViewCell.swift */; };
 		D4D1DC9D1D7E436800953494 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1DC9C1D7E436800953494 /* RatingViewController.swift */; };
+		D4DD802E1DB7046400ED6A5B /* CreateRatingDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DD802D1DB7046400ED6A5B /* CreateRatingDetailsViewController.swift */; };
 		F21F573B6EBD1F94C93B293D /* Pods_Rated.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 351FFEC6968950CDA4FAB1BE /* Pods_Rated.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		D4C326B41D98AE1F004556A2 /* Rated.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rated.entitlements; sourceTree = "<group>"; };
 		D4D1DC9A1D7DB84B00953494 /* RatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
 		D4D1DC9C1D7E436800953494 /* RatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
+		D4DD802D1DB7046400ED6A5B /* CreateRatingDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRatingDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		D4C20FE81D9E0E3000617E3A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D4DD802D1DB7046400ED6A5B /* CreateRatingDetailsViewController.swift */,
 				D4BDF50C1D7CDB2F003A3C60 /* CreateRatingViewController.swift */,
 				D42D3DE41DA73FC0008254F2 /* FollowedRatingsViewController.swift */,
 				D40334EE1D810D5900051DE9 /* LoginViewController.swift */,
@@ -279,6 +282,7 @@
 				D4D1DC9B1D7DB84B00953494 /* RatingTableViewCell.swift in Sources */,
 				D4C20FE71D9E0C5700617E3A /* UserProfileViewController.swift in Sources */,
 				D4D1DC9D1D7E436800953494 /* RatingViewController.swift in Sources */,
+				D4DD802E1DB7046400ED6A5B /* CreateRatingDetailsViewController.swift in Sources */,
 				D42D3DE31DA73218008254F2 /* RatingsViewController.swift in Sources */,
 				D410C4F21D8DD80B00A15EED /* Rater.swift in Sources */,
 				D462F7881D8E4662006CBCF9 /* Rating.swift in Sources */,

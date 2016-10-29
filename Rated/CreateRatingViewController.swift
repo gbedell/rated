@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
 
 class CreateRatingViewController: UIViewController {
     
@@ -18,7 +16,7 @@ class CreateRatingViewController: UIViewController {
     @IBOutlet weak var ratingNameTextField: UITextField!
     @IBOutlet weak var ratingSlider: UISlider!
     @IBOutlet weak var ratingScoreLabel: UILabel!
-    @IBOutlet weak var createRatingButton: UIBarButtonItem!
+    @IBOutlet weak var goToMoreDetailsButton: UIBarButtonItem!
 
     
     // Mark: Actions
@@ -29,61 +27,21 @@ class CreateRatingViewController: UIViewController {
     @IBAction func dismissModal(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
-
-    @IBAction func createRating(_ sender: UIBarButtonItem) {
-        // Call REST API for Creating Rating
-        if let existingRater = self.rater {
-            let ratingName = ratingNameTextField.text!
-            print("RATING NAME: \(ratingName)")
-            let ratingScore = roundToPlaces(Double(ratingSlider.value), decimalPlaces: 1)
-            print("RATING SCORE: \(ratingScore)")
-            let raterId = existingRater.raterId!
-            print("Rater Id: \(raterId)")
-            let params: Parameters = [
-                "name": ratingName,
-                "score" :ratingScore,
-                "rater" : [
-                    "raterId" : raterId
-                ]
-            ]
-            print("Params == \(params)")
-            // Call Rest API
-                
-            // Basic Auth
-            let user = "admin"
-            let password = "899e42fc-8807-442e-8c7b-dc561f0f194a"
-            
-            var headers: HTTPHeaders = [:]
-            
-            if let authorizationHeader = Request.authorizationHeader(user: user, password: password) {
-                headers[authorizationHeader.key] = authorizationHeader.value
-            }
-            
-            Alamofire.request(controllerConstants.CREATE_RATING_URL, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers)
-                    .responseJSON { response in
-                        switch response.result {
-                        case .success(let data):
-                            print(data)
-                            let json = JSON(data)
-                            print(json)
-                        case .failure(let error):
-                            print("Request failed with error: \(error)")
-                        }
-                }
-            }
-        self.dismiss(animated: true, completion: nil)
-    }
     
     override func viewDidLoad() {
         self.navigationController?.navigationBar.tintColor = UIColor.white
-        createRatingButton.isEnabled = false
+        goToMoreDetailsButton.isEnabled = false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        ratingNameTextField.becomeFirstResponder()
     }
     
     @IBAction func checkEnableCreateButton(_ sender: UITextField) {
         if (sender.text?.characters.count)! > 0 {
-            createRatingButton.isEnabled = true
+            goToMoreDetailsButton.isEnabled = true
         } else {
-            createRatingButton.isEnabled = false
+            goToMoreDetailsButton.isEnabled = false
         }
     }
     
@@ -94,6 +52,21 @@ class CreateRatingViewController: UIViewController {
     
     fileprivate struct controllerConstants {
         static let CREATE_RATING_URL = "https://ratedrest.herokuapp.com/ratings"
+        static let MORE_DETAILS_SEGUE = "toCreateRatingsDetails"
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == controllerConstants.MORE_DETAILS_SEGUE {
+            if let destinationVC = segue.destination as? CreateRatingDetailsViewController,
+                let rater = rater {
+                destinationVC.rater = rater
+                
+                let rating = Rating()
+                rating.name = ratingNameTextField.text
+                rating.score = roundToPlaces(Double(ratingSlider.value), decimalPlaces: 1)
+                
+            }
+        }
     }
     
     

@@ -76,15 +76,15 @@
                                 <action selector="dismissModal:" destination="Eo5-o5-57k" id="n9I-aE-OjC"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Create" id="YLT-xS-XAV">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="5s2-2W-NAu">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="createRating:" destination="Eo5-o5-57k" id="EWq-ts-7gU"/>
+                                <segue destination="U0e-Or-U5J" kind="show" identifier="toCreateRatingDetails" id="q7E-r5-Ihg"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="createRatingButton" destination="YLT-xS-XAV" id="BWQ-T1-6Uk"/>
+                        <outlet property="goToMoreDetailsButton" destination="5s2-2W-NAu" id="A9S-VV-Dpb"/>
                         <outlet property="ratingNameTextField" destination="nzb-Hx-oia" id="B2T-hx-vl4"/>
                         <outlet property="ratingScoreLabel" destination="1Zt-U2-7RN" id="AdL-Gv-9sq"/>
                         <outlet property="ratingSlider" destination="8PB-b4-U72" id="JwU-BE-vz1"/>
@@ -93,6 +93,76 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="01v-TD-d1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2662" y="329"/>
+        </scene>
+        <!--Create Rating Details View Controller-->
+        <scene sceneID="dJu-2W-AjN">
+            <objects>
+                <viewController id="U0e-Or-U5J" customClass="CreateRatingDetailsViewController" customModule="Rated" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aoq-SC-gVc"/>
+                        <viewControllerLayoutGuide type="bottom" id="QIT-6M-3ts"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tqA-bV-AX0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Leave a review" translatesAutoresizingMaskIntoConstraints="NO" id="YRC-Ka-DEv">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YiT-21-NrM">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="oKV-KP-ZXE"/>
+                                </constraints>
+                                <state key="normal" title="Add a Picture">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FV1-8v-HWU">
+                                <frame key="frameInset" minY="272" width="375" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add a Picture" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WvS-9a-9Gv">
+                                        <frame key="frameInset" minX="8" minY="8" width="123" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YRC-Ka-DEv" firstAttribute="trailing" secondItem="YiT-21-NrM" secondAttribute="trailing" id="7Xo-xH-Pwz"/>
+                            <constraint firstItem="YRC-Ka-DEv" firstAttribute="top" secondItem="aoq-SC-gVc" secondAttribute="bottom" id="B2A-X8-h7J"/>
+                            <constraint firstItem="QIT-6M-3ts" firstAttribute="top" secondItem="YiT-21-NrM" secondAttribute="bottom" constant="359" id="J3T-8m-3XE"/>
+                            <constraint firstItem="YRC-Ka-DEv" firstAttribute="leading" secondItem="YiT-21-NrM" secondAttribute="leading" id="V8K-mN-kZm"/>
+                            <constraint firstItem="YiT-21-NrM" firstAttribute="top" secondItem="YRC-Ka-DEv" secondAttribute="bottom" constant="8" symbolic="YES" id="W1H-1L-6ox"/>
+                            <constraint firstAttribute="trailing" secondItem="YRC-Ka-DEv" secondAttribute="trailing" id="g1p-Pt-mzp"/>
+                            <constraint firstItem="YRC-Ka-DEv" firstAttribute="leading" secondItem="tqA-bV-AX0" secondAttribute="leading" id="y2c-Tn-k2f"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="0v9-n1-IS8">
+                        <barButtonItem key="rightBarButtonItem" title="Create" id="2Or-Mv-LQH">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="createRating:" destination="U0e-Or-U5J" id="n8i-IM-9UE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addPictureButton" destination="YiT-21-NrM" id="ynp-dk-dN7"/>
+                        <outlet property="ratingReviewTextView" destination="YRC-Ka-DEv" id="2yK-l8-QJM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wMP-Yx-rIN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3439.1999999999998" y="328.78560719640183"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dLQ-rO-jTb">
@@ -323,7 +393,7 @@
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="8L0-fm-0Gs"/>
                         <barButtonItem title="Rate" id="WJN-sV-56n">
-                            <color key="tintColor" red="1" green="0.44528013189999999" blue="0.25093931860000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.96862745098039216" green="0.44313725490196076" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="c2e-jG-BLo" kind="presentation" identifier="toCreateRatingView" id="xm9-sC-iTo"/>
                             </connections>
@@ -341,6 +411,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sZD-j1-69t"/>
+        <segue reference="xm9-sC-iTo"/>
     </inferredMetricsTieBreakers>
 </document>
