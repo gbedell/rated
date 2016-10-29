@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 import SwiftyJSON
 
 class RatingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -96,49 +95,6 @@ class RatingsViewController: UIViewController, UITableViewDelegate, UITableViewD
         static let GET_USER_RATINGS_BY_USERNAME_URL = "https://ratedrest.herokuapp.com/ratings/rater/username/"
     }
     
-    private func fetchRatings() {
-        // Basic Auth
-        let user = "admin"
-        let password = "899e42fc-8807-442e-8c7b-dc561f0f194a"
-        var headers: HTTPHeaders = [:]
-        if let authorizationHeader = Request.authorizationHeader(user: user, password: password) {
-            headers[authorizationHeader.key] = authorizationHeader.value
-        }
-        
-        if let ratingsUrl = ratingsUrl {
-            Alamofire.request(ratingsUrl, headers: headers)
-                .responseJSON { response in
-                    switch response.result {
-                    case .success(let data):
-                        print(data)
-                        let json = JSON(data)
-                        if let ratingsArray = json.array {
-                            for r in ratingsArray {
-                                // Parse JSON into Rating object
-                                let rating = Rating()
-                                rating.ratingId = r["ratingId"].intValue
-                                rating.name = r["name"].stringValue
-                                rating.score = r["score"].doubleValue
-                                
-                                // Parse JSON into Rater object
-                                let transformedRater = Rater()
-                                transformedRater.raterId = r["rater"]["raterId"].intValue
-                                transformedRater.facebookId = r["rater"]["facebookId"].intValue
-                                transformedRater.username = r["rater"]["username"].stringValue
-                                transformedRater.email = r["rater"]["email"].stringValue
-                                // Do something with date here eventually
-                                
-                                // Add Rater to Rating
-                                rating.rater = transformedRater
-                                
-                                self.ratings.append(rating)
-                            }
-                        }
-                    case .failure(let error):
-                        print("Request failed with error: \(error)")
-                    }
-            }
-        }
-    }
+    private func fetchRatings() {}
 
 }
