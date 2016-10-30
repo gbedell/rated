@@ -9,17 +9,37 @@
 import UIKit
 import FBSDKLoginKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
+    
+    var loginButton = FBSDKLoginButton()
+    
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let loginButton = FBSDKLoginButton()
-        loginButton.frame = CGRect(x: 16, y: 100, width: view.frame.width - 32, height: 50)
-        loginButton.delegate = self
-        loginButton.readPermissions = ["email", "public_profile"]
-        view.addSubview(loginButton)
+        self.loginButton.isHidden = true
+        
+        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
+            if user != nil {
+                // User is signed in.
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let navigationViewController: UINavigationController = mainStoryboard.instantiateViewController(withIdentifier: "InitialNavigation") as! UINavigationController
+                
+                self.present(navigationViewController, animated: true, completion: nil)
+                
+            } else {
+                // No user is signed in.
+                self.loginButton.frame = CGRect(x: 16, y: 100, width: self.view.frame.width - 32, height: 50)
+                self.loginButton.delegate = self
+                self.loginButton.readPermissions = ["email", "public_profile"]
+                self.loginButton.isHidden = false
+                
+                self.view.addSubview(self.loginButton)
+            }
+        }
     }
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
@@ -27,28 +47,66 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        
+        self.loginButton.isHidden = true
+        
+        self.activityIndicatorView.startAnimating()
+        
         if error != nil {
             print(error)
-            return
-        }
-        
-        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
             
-            if error != nil {
-                print("Failed to start graph request: ", error)
-                return
-            }
+            self.loginButton.isHidden = false
+            self.activityIndicatorView.stopAnimating()
+            
+        } else if (result.isCancelled) {
+            
+            print("User cancelled Facebook Authentication")
+            
+            self.loginButton.isHidden = false
+            self.activityIndicatorView.stopAnimating()
+            
+        } else {
             
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             
             FIRAuth.auth()?.signIn(with: credential) { (user, error) in
                 if error != nil {
                     print("Firebase Authentication failed with error:", error)
-                    return
+                } else {
+                    print("Firebase Authentication successful")
+                    
+                    let userRef = FIRDatabase.database().reference().child("users")
+                    let uid = user?.uid
+                    let email = user?.email
+                    let photoUrl = user?.photoURL?.absoluteString
+                    let name = user?.displayName
+                    
+                    userRef.queryOrdered(byChild: "uid").queryEqual(toValue: uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+                        print(snapshot.value)
+                        if !snapshot.exists() {
+                            
+                            let newUserRef = userRef.childByAutoId()
+                            
+                            var newUser = [String: Any]()
+                            newUser["uid"] = uid
+                            newUser["displayName"] = name
+                            newUser["email"] = email
+                            newUser["photoUrl"] = photoUrl
+                            newUser["isFirstLogin"] = true
+                            newUser["lastLogin"] = NSDate().timeIntervalSince1970
+                            newUser["dateCreated"] = NSDate().timeIntervalSince1970
+                            
+                            newUserRef.setValue(newUser)
+                            
+                        } else {
+                            for child in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                                child.ref.updateChildValues(["lastLogin": Date().timeIntervalSince1970])
+                            }
+                        }
+
+                    })
                 }
             }
-            
-            
         }
     }
     

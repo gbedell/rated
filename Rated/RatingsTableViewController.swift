@@ -8,11 +8,21 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
+import FBSDKCoreKit
 
 class RatingsTableViewController: UITableViewController {
     
     // Mark: - Model
     
+    @IBAction func didTapLogoutButton(_ sender: UIButton) {
+        try! FIRAuth.auth()?.signOut()
+        FBSDKAccessToken.setCurrent(nil)
+        
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginView")
+        self.present(loginViewController, animated: true, completion: nil)
+    }
     var ratings: [Rating] = []
     
     let ref = FIRDatabase.database().reference(withPath: "ratings")
