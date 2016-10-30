@@ -13,7 +13,24 @@ import FBSDKCoreKit
 
 class RatingsTableViewController: UITableViewController {
     
-    // Mark: - Model
+    // Mark: Properties
+    
+    var ratings: [Rating] = []
+    
+    var rater: Rater?
+    
+    let ratingsRef = FIRDatabase.database().reference(withPath: "ratings")
+    let usersRef = FIRDatabase.database().reference(withPath: "users")
+    
+    let ratingCell = "RatingCell"
+    
+    struct controllerConstants {
+        static let CREATE_RATING_SEGUE = "toCreateRatingView"
+        static let VIEW_RATING_SEGUE = "toViewRatingView"
+        static let TO_USER_RATINGS_TABLE_SEGUE = "toUserRatingsTable"
+    }
+    
+    // Mark: Actions
     
     @IBAction func didTapLogoutButton(_ sender: UIButton) {
         try! FIRAuth.auth()?.signOut()
@@ -23,16 +40,6 @@ class RatingsTableViewController: UITableViewController {
         let loginViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginView")
         self.present(loginViewController, animated: true, completion: nil)
     }
-    var ratings: [Rating] = []
-    
-    let ref = FIRDatabase.database().reference(withPath: "ratings")
-    let ratingCell = "RatingCell"
-    
-    struct controllerConstants {
-        static let CREATE_RATING_SEGUE = "toCreateRatingView"
-        static let VIEW_RATING_SEGUE = "toViewRatingView"
-        static let TO_USER_RATINGS_TABLE_SEGUE = "toUserRatingsTable"
-    }
     
     // Mark: - Lifecycle methods
 
@@ -40,7 +47,7 @@ class RatingsTableViewController: UITableViewController {
         title = "Rated"
         
         // Watch for changes in ratings from firebase
-        ref.observe(.value, with: { snapshot in
+        ratingsRef.observe(.value, with: { snapshot in
             
             var newRatings: [Rating] = []
             for rating in snapshot.children {
@@ -53,7 +60,7 @@ class RatingsTableViewController: UITableViewController {
         })
     }
     
-    // MARK: - Table view data source
+    // MARK: Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ratings.count

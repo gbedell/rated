@@ -12,15 +12,19 @@ import FirebaseAuth
 open class Rater {
     
     var uid: String?
+    var displayName: String?
     var username: String?
     var email: String?
+    var photoUrl: String?
     var dateCreated: Date?
+    var lastLogin: Date?
+    var isFirstLogin: Bool?
     
-    init(uid: String, username: String, email: String, dateCreated: Date) {
+    init(uid: String, displayName: String, username: String, email: String) {
         self.uid = uid
+        self.displayName = displayName
         self.username = username
         self.email = email
-        self.dateCreated = dateCreated
     }
     
     init(authData: FIRUser) {

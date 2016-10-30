@@ -13,9 +13,13 @@ import FirebaseDatabase
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
+    // Mark: Properties
+    
     var loginButton = FBSDKLoginButton()
     
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
+    // Mark: Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +29,24 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         FIRAuth.auth()?.addStateDidChangeListener { auth, user in
             if user != nil {
                 // User is signed in.
+                let userRef = FIRDatabase.database().reference().child("users")
+                let uid = user?.uid
+                
+                userRef.queryOrdered(byChild: "uid").queryEqual(toValue: uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+                    if snapshot.exists() {
+                        
+                        for child in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                            child.ref.updateChildValues(["lastLogin": Date().timeIntervalSince1970])
+                        }
+                        
+                    }
+                
                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let navigationViewController: UINavigationController = mainStoryboard.instantiateViewController(withIdentifier: "InitialNavigation") as! UINavigationController
                 
                 self.present(navigationViewController, animated: true, completion: nil)
+                
+                })
                 
             } else {
                 // No user is signed in.
@@ -41,6 +59,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
         }
     }
+    
+    // Mark: Facebook Methods
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User successfully logged out of Facebook.")
