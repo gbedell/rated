@@ -17,6 +17,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     var loginButton = FBSDKLoginButton()
     
+    var firebaseRef = FIRDatabase.database().reference()
+    
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     // Mark: Methods
@@ -29,24 +31,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         FIRAuth.auth()?.addStateDidChangeListener { auth, user in
             if user != nil {
                 // User is signed in.
-                let userRef = FIRDatabase.database().reference().child("users")
                 let uid = user?.uid
-                
-                userRef.queryOrdered(byChild: "uid").queryEqual(toValue: uid!).observeSingleEvent(of: .value, with: { (snapshot) in
-                    if snapshot.exists() {
-                        
-                        for child in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                            child.ref.updateChildValues(["lastLogin": Date().timeIntervalSince1970])
-                        }
-                        
-                    }
+                let existingUserRef = self.firebaseRef.child("users").child(uid!)
+                existingUserRef.updateChildValues(["lastLogin": Date().timeIntervalSince1970])
                 
                 let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let navigationViewController: UINavigationController = mainStoryboard.instantiateViewController(withIdentifier: "InitialNavigation") as! UINavigationController
                 
                 self.present(navigationViewController, animated: true, completion: nil)
-                
-                })
                 
             } else {
                 // No user is signed in.
@@ -95,18 +87,15 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 } else {
                     print("Firebase Authentication successful")
                     
-                    let userRef = FIRDatabase.database().reference().child("users")
+                    let userRef = self.firebaseRef.child("users")
                     let uid = user?.uid
                     let email = user?.email
                     let photoUrl = user?.photoURL?.absoluteString
                     let name = user?.displayName
                     
-                    userRef.queryOrdered(byChild: "uid").queryEqual(toValue: uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+                    userRef.child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
                         print(snapshot.value)
                         if !snapshot.exists() {
-                            
-                            let newUserRef = userRef.childByAutoId()
-                            
                             var newUser = [String: Any]()
                             newUser["uid"] = uid
                             newUser["displayName"] = name
@@ -116,14 +105,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                             newUser["lastLogin"] = NSDate().timeIntervalSince1970
                             newUser["dateCreated"] = NSDate().timeIntervalSince1970
                             
+                            let newUserRef = userRef.child(uid!)
                             newUserRef.setValue(newUser)
-                            
-                        } else {
-                            for child in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                                child.ref.updateChildValues(["lastLogin": Date().timeIntervalSince1970])
-                            }
                         }
-
                     })
                 }
             }
