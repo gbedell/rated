@@ -41,7 +41,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 self.present(navigationViewController, animated: true, completion: nil)
                 
             } else {
-                // No user is signed in.
+                // No user is signed in, display the login button
                 self.loginButton.frame = CGRect(x: 16, y: 100, width: self.view.frame.width - 32, height: 50)
                 self.loginButton.delegate = self
                 self.loginButton.readPermissions = ["email", "public_profile"]
