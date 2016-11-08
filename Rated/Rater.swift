@@ -7,13 +7,29 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 open class Rater {
     
-    var raterId: Int?
+    var uid: String?
+    var displayName: String?
     var username: String?
     var email: String?
+    var photoUrl: String?
     var dateCreated: Date?
-    var facebookId: Int?
+    var lastLogin: Date?
+    var isFirstLogin: Bool?
+    
+    init(uid: String, displayName: String, username: String, email: String) {
+        self.uid = uid
+        self.displayName = displayName
+        self.username = username
+        self.email = email
+    }
+    
+    init(authData: FIRUser) {
+        uid = authData.uid
+        email = authData.email
+    }
     
 }

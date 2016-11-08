@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 import SwiftyJSON
 
 class CreateRatingDetailsViewController: UIViewController, UITextViewDelegate {
@@ -28,43 +27,6 @@ class CreateRatingDetailsViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func createRating(_ sender: UIBarButtonItem) {
         // Call REST API for Creating Rating
-        if let existingRater = self.rater,
-            let rating = rating {
-            let ratingName = rating.name
-            let ratingScore = rating.score
-            let raterId = existingRater.raterId!
-            let params: Parameters = [
-                "name": ratingName,
-                "score" :ratingScore,
-                "rater" : [
-                    "raterId" : raterId
-                ]
-            ]
-            print("Params == \(params)")
-            // Call Rest API
-            
-            // Basic Auth
-            let user = "admin"
-            let password = "899e42fc-8807-442e-8c7b-dc561f0f194a"
-            
-            var headers: HTTPHeaders = [:]
-            
-            if let authorizationHeader = Request.authorizationHeader(user: user, password: password) {
-                headers[authorizationHeader.key] = authorizationHeader.value
-            }
-            
-            Alamofire.request(controllerConstants.CREATE_RATING_URL, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers)
-                .responseJSON { response in
-                    switch response.result {
-                    case .success(let data):
-                        print(data)
-                        let json = JSON(data)
-                        print(json)
-                    case .failure(let error):
-                        print("Request failed with error: \(error)")
-                    }
-            }
-        }
         self.dismiss(animated: true, completion: nil)
     }
     

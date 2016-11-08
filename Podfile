@@ -7,9 +7,10 @@ target 'Rated' do
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'
-  pod 'Alamofire', '~> 4.0'
   pod 'SwiftyJSON'
-  pod 'AWSS3'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Auth'
 
   # Pods for Rated
 

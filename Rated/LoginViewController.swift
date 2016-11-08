@@ -2,132 +2,113 @@
 //  LoginViewController.swift
 //  Rated
 //
-//  Created by Gavin Bedell on 9/7/16.
+//  Created by Gavin Bedell on 10/29/16.
 //  Copyright © 2016 Gavin Bedell. All rights reserved.
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
-import FacebookLogin
-import FacebookCore
+import FBSDKLoginKit
+import FirebaseAuth
+import FirebaseDatabase
 
-class LoginViewController: UIViewController, LoginButtonDelegate {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
-    // Mark - Model
-    var rater: Rater?
+    // Mark: Properties
     
-    var accessToken: AccessToken?
+    var loginButton = FBSDKLoginButton()
     
-    // Mark - View Lifecycle Methods
+    var firebaseRef = FIRDatabase.database().reference()
+    
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
+    // Mark: Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let accessToken = AccessToken.current {
-            print("User has a current access token: \(accessToken)")
-            self.accessToken = accessToken
-        } else {
-            print("No current access token")
-            let loginButton = LoginButton(readPermissions: [.publicProfile, .email])
-            loginButton.center = view.center
-            loginButton.delegate = self
-            view.addSubview(loginButton)
-        }
+        self.loginButton.isHidden = true
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if let accessToken = self.accessToken {
-            print("Access token: \(accessToken)")
-            returnUserData()
+        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
+            if user != nil {
+                // User is signed in.
+                let uid = user?.uid
+                let existingUserRef = self.firebaseRef.child("users").child(uid!)
+                existingUserRef.updateChildValues(["lastLogin": Date().timeIntervalSince1970])
+                
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let navigationViewController: UINavigationController = mainStoryboard.instantiateViewController(withIdentifier: "InitialNavigation") as! UINavigationController
+                
+                self.present(navigationViewController, animated: true, completion: nil)
+                
+            } else {
+                // No user is signed in, display the login button
+                self.loginButton.frame = CGRect(x: 16, y: 100, width: self.view.frame.width - 32, height: 50)
+                self.loginButton.delegate = self
+                self.loginButton.readPermissions = ["email", "public_profile"]
+                self.loginButton.isHidden = false
+                
+                self.view.addSubview(self.loginButton)
+            }
         }
     }
     
-    func loginButtonDidCompleteLogin(_ loginButton: LoginButton, result: LoginResult) {
-        switch result {
-        case .success:
-            returnUserData()
-        case .cancelled:
-            print("User cancelled login.")
-        case .failed(let error):
+    // Mark: Facebook Methods
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print("User successfully logged out of Facebook.")
+    }
+    
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        
+        self.loginButton.isHidden = true
+        
+        self.activityIndicatorView.startAnimating()
+        
+        if error != nil {
             print(error)
-        }
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: LoginButton) {
-        print("User logged out.")
-    }
-    
-    fileprivate struct controllerConstants {
-        static let LOGIN_SUCCESS_SEGUE = "LoginSuccess"
-        static let GET_USER_INFO_URL = "https://ratedrest.herokuapp.com/raters/facebook-id/"
-        static let GET_FOLLOWED_RATINGS_URL = "https://ratedrest.herokuapp.com/ratings/follower-rater-id/"
-    }
-    
-    fileprivate func returnUserData() {
-        
-        let params = ["fields" : "email"]
-        let graphRequest = GraphRequest(graphPath: "me", parameters: params, accessToken: accessToken, httpMethod: .GET, apiVersion: .defaultVersion)
-        graphRequest.start { (urlResponse, requestResult) in
-            switch requestResult {
-            case .failed(let error):
-                print("Error with graph request: \(error).")
-            case .success(let graphResponse):
-                let resultJson = JSON(graphResponse.dictionaryValue)
-                
-                let facebookId = resultJson["id"].intValue
-                print("FacebookId = \(facebookId)")
-                
-                // Basic Auth
-                let user = "admin"
-                let password = "899e42fc-8807-442e-8c7b-dc561f0f194a"
-                
-                var headers: HTTPHeaders = [:]
-                
-                if let authorizationHeader = Request.authorizationHeader(user: user, password: password) {
-                    headers[authorizationHeader.key] = authorizationHeader.value
-                }
-                
-                Alamofire.request(controllerConstants.GET_USER_INFO_URL + String(facebookId), headers: headers)
-                    .responseJSON { response in
-                        switch response.result {
-                        case .success(let data):
-                            print(data)
-                            let json = JSON(data)
-                            let username = json["username"].stringValue
-                            let email = json["email"].stringValue
-                            let raterId = json["raterId"].intValue
-                            let facebookId = json["facebookId"].intValue
+            
+            self.loginButton.isHidden = false
+            self.activityIndicatorView.stopAnimating()
+            
+        } else if (result.isCancelled) {
+            
+            print("User cancelled Facebook Authentication")
+            
+            self.loginButton.isHidden = false
+            self.activityIndicatorView.stopAnimating()
+            
+        } else {
+            
+            let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+            
+            FIRAuth.auth()?.signIn(with: credential) { (user, error) in
+                if error != nil {
+                    print("Firebase Authentication failed with error:", error)
+                } else {
+                    print("Firebase Authentication successful")
+                    
+                    let userRef = self.firebaseRef.child("users")
+                    let uid = user?.uid
+                    let email = user?.email
+                    let photoUrl = user?.photoURL?.absoluteString
+                    let name = user?.displayName
+                    
+                    userRef.child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+                        print(snapshot.value)
+                        if !snapshot.exists() {
+                            var newUser = [String: Any]()
+                            newUser["uid"] = uid
+                            newUser["displayName"] = name
+                            newUser["email"] = email
+                            newUser["photoUrl"] = photoUrl
+                            newUser["isFirstLogin"] = true
+                            newUser["lastLogin"] = NSDate().timeIntervalSince1970
+                            newUser["dateCreated"] = NSDate().timeIntervalSince1970
                             
-                            let user = Rater()
-                            
-                            user.username = username
-                            user.email = email
-                            user.raterId = raterId
-                            user.facebookId = facebookId
-                            
-                            self.rater = user
-                            
-                            self.performSegue(withIdentifier: controllerConstants.LOGIN_SUCCESS_SEGUE, sender: self)
-                            
-                        case .failure(let error):
-                            print("Request failed with error: \(error)")
+                            let newUserRef = userRef.child(uid!)
+                            newUserRef.setValue(newUser)
                         }
-                }
-            }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == controllerConstants.LOGIN_SUCCESS_SEGUE {
-            var destinationVC = segue.destination
-            if let navcon = destinationVC as? UINavigationController {
-                destinationVC = navcon.visibleViewController ?? destinationVC
-            }
-            if let ratingsTableVC = destinationVC as? FollowedRatingsViewController {
-                if let rater = self.rater {
-                    ratingsTableVC.rater = rater
-                    ratingsTableVC.ratingsUrl = controllerConstants.GET_FOLLOWED_RATINGS_URL + String(rater.raterId!)
+                    })
                 }
             }
         }

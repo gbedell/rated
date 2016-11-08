@@ -7,32 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D40334EF1D810D5900051DE9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40334EE1D810D5900051DE9 /* LoginViewController.swift */; };
+		2CC8D86BDA9B1B285CCD9070 /* Pods_Rated.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0244D5C7552DA019CE255217 /* Pods_Rated.framework */; };
 		D410C4F21D8DD80B00A15EED /* Rater.swift in Sources */ = {isa = PBXBuildFile; fileRef = D410C4F11D8DD80B00A15EED /* Rater.swift */; };
-		D42D3DE31DA73218008254F2 /* RatingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D3DE21DA73218008254F2 /* RatingsViewController.swift */; };
-		D42D3DE51DA73FC0008254F2 /* FollowedRatingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42D3DE41DA73FC0008254F2 /* FollowedRatingsViewController.swift */; };
+		D433BB431DC45C48002C1F70 /* RatingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D433BB421DC45C48002C1F70 /* RatingsTableViewController.swift */; };
 		D462F7881D8E4662006CBCF9 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D462F7871D8E4662006CBCF9 /* Rating.swift */; };
+		D4B528A01DC4337C00B2DE13 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4B5289F1DC4337C00B2DE13 /* GoogleService-Info.plist */; };
 		D4BDF4EE1D7CD0E4003A3C60 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF4ED1D7CD0E4003A3C60 /* AppDelegate.swift */; };
 		D4BDF4F31D7CD0E4003A3C60 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4BDF4F11D7CD0E4003A3C60 /* Main.storyboard */; };
 		D4BDF4F81D7CD0E4003A3C60 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4BDF4F71D7CD0E4003A3C60 /* Assets.xcassets */; };
 		D4BDF4FB1D7CD0E4003A3C60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4BDF4F91D7CD0E4003A3C60 /* LaunchScreen.storyboard */; };
 		D4BDF50D1D7CDB2F003A3C60 /* CreateRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BDF50C1D7CDB2F003A3C60 /* CreateRatingViewController.swift */; };
-		D4C20FE71D9E0C5700617E3A /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4C20FE61D9E0C5400617E3A /* UserProfileViewController.swift */; };
 		D4D1DC9B1D7DB84B00953494 /* RatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1DC9A1D7DB84B00953494 /* RatingTableViewCell.swift */; };
-		D4D1DC9D1D7E436800953494 /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D1DC9C1D7E436800953494 /* RatingViewController.swift */; };
+		D4D85FD91DC4F9A800DFC441 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D85FD81DC4F9A800DFC441 /* LoginViewController.swift */; };
 		D4DD802E1DB7046400ED6A5B /* CreateRatingDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DD802D1DB7046400ED6A5B /* CreateRatingDetailsViewController.swift */; };
-		F21F573B6EBD1F94C93B293D /* Pods_Rated.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 351FFEC6968950CDA4FAB1BE /* Pods_Rated.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		351FFEC6968950CDA4FAB1BE /* Pods_Rated.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rated.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F5B67E4218568EA4FD663C8 /* Pods-Rated.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rated.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rated/Pods-Rated.release.xcconfig"; sourceTree = "<group>"; };
-		D26C0D4A570B0036308A69FE /* Pods-Rated.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rated.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rated/Pods-Rated.debug.xcconfig"; sourceTree = "<group>"; };
-		D40334EE1D810D5900051DE9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0244D5C7552DA019CE255217 /* Pods_Rated.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rated.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		78637525B587F91B71C7B03D /* Pods-Rated.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rated.release.xcconfig"; path = "Pods/Target Support Files/Pods-Rated/Pods-Rated.release.xcconfig"; sourceTree = "<group>"; };
+		B8FF0B642AB7D3F0380CB1AB /* Pods-Rated.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rated.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Rated/Pods-Rated.debug.xcconfig"; sourceTree = "<group>"; };
 		D410C4F11D8DD80B00A15EED /* Rater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rater.swift; sourceTree = "<group>"; };
-		D42D3DE21DA73218008254F2 /* RatingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingsViewController.swift; sourceTree = "<group>"; };
-		D42D3DE41DA73FC0008254F2 /* FollowedRatingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowedRatingsViewController.swift; sourceTree = "<group>"; };
+		D433BB421DC45C48002C1F70 /* RatingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingsTableViewController.swift; sourceTree = "<group>"; };
 		D462F7871D8E4662006CBCF9 /* Rating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		D4B5289F1DC4337C00B2DE13 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4BDF4EA1D7CD0E4003A3C60 /* Rated.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rated.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4BDF4ED1D7CD0E4003A3C60 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4BDF4F21D7CD0E4003A3C60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -40,10 +37,9 @@
 		D4BDF4FA1D7CD0E4003A3C60 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4BDF4FC1D7CD0E4003A3C60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4BDF50C1D7CDB2F003A3C60 /* CreateRatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRatingViewController.swift; sourceTree = "<group>"; };
-		D4C20FE61D9E0C5400617E3A /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		D4C326B41D98AE1F004556A2 /* Rated.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rated.entitlements; sourceTree = "<group>"; };
 		D4D1DC9A1D7DB84B00953494 /* RatingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingTableViewCell.swift; sourceTree = "<group>"; };
-		D4D1DC9C1D7E436800953494 /* RatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
+		D4D85FD81DC4F9A800DFC441 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D4DD802D1DB7046400ED6A5B /* CreateRatingDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRatingDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,19 +48,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F21F573B6EBD1F94C93B293D /* Pods_Rated.framework in Frameworks */,
+				2CC8D86BDA9B1B285CCD9070 /* Pods_Rated.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1989B711A1F839AF8B3511C6 /* Frameworks */ = {
+		3962026CA29002028D3A3CB5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				351FFEC6968950CDA4FAB1BE /* Pods_Rated.framework */,
+				0244D5C7552DA019CE255217 /* Pods_Rated.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		88C34DF667E9BDBA56829F10 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B8FF0B642AB7D3F0380CB1AB /* Pods-Rated.debug.xcconfig */,
+				78637525B587F91B71C7B03D /* Pods-Rated.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		D410C4F01D8DD7DE00A15EED /* Objects */ = {
@@ -81,8 +86,8 @@
 			children = (
 				D4BDF4EC1D7CD0E4003A3C60 /* Rated */,
 				D4BDF4EB1D7CD0E4003A3C60 /* Products */,
-				F93029CDB9A032E057AD1D8A /* Pods */,
-				1989B711A1F839AF8B3511C6 /* Frameworks */,
+				88C34DF667E9BDBA56829F10 /* Pods */,
+				3962026CA29002028D3A3CB5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +117,7 @@
 				D4BDF4ED1D7CD0E4003A3C60 /* AppDelegate.swift */,
 				D4BDF4F71D7CD0E4003A3C60 /* Assets.xcassets */,
 				D4BDF4FC1D7CD0E4003A3C60 /* Info.plist */,
+				D4B5289F1DC4337C00B2DE13 /* GoogleService-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -121,11 +127,8 @@
 			children = (
 				D4DD802D1DB7046400ED6A5B /* CreateRatingDetailsViewController.swift */,
 				D4BDF50C1D7CDB2F003A3C60 /* CreateRatingViewController.swift */,
-				D42D3DE41DA73FC0008254F2 /* FollowedRatingsViewController.swift */,
-				D40334EE1D810D5900051DE9 /* LoginViewController.swift */,
-				D42D3DE21DA73218008254F2 /* RatingsViewController.swift */,
-				D4D1DC9C1D7E436800953494 /* RatingViewController.swift */,
-				D4C20FE61D9E0C5400617E3A /* UserProfileViewController.swift */,
+				D4D85FD81DC4F9A800DFC441 /* LoginViewController.swift */,
+				D433BB421DC45C48002C1F70 /* RatingsTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -140,15 +143,6 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
-		F93029CDB9A032E057AD1D8A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				D26C0D4A570B0036308A69FE /* Pods-Rated.debug.xcconfig */,
-				5F5B67E4218568EA4FD663C8 /* Pods-Rated.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,12 +150,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4BDF4FF1D7CD0E4003A3C60 /* Build configuration list for PBXNativeTarget "Rated" */;
 			buildPhases = (
-				8F4938E5F318D3E42B9953E6 /* [CP] Check Pods Manifest.lock */,
+				CDB1C7A8D2807F5F6BF45258 /* [CP] Check Pods Manifest.lock */,
 				D4BDF4E61D7CD0E4003A3C60 /* Sources */,
 				D4BDF4E71D7CD0E4003A3C60 /* Frameworks */,
 				D4BDF4E81D7CD0E4003A3C60 /* Resources */,
-				69C75D0E13832F09017DE086 /* [CP] Embed Pods Frameworks */,
-				71AF7EC3E9928E0CA96D3505 /* [CP] Copy Pods Resources */,
+				240E593ED0A2088AF46A3FBB /* [CP] Embed Pods Frameworks */,
+				BC6CB2A06F17B986E5B92A59 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -218,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4BDF4FB1D7CD0E4003A3C60 /* LaunchScreen.storyboard in Resources */,
+				D4B528A01DC4337C00B2DE13 /* GoogleService-Info.plist in Resources */,
 				D4BDF4F81D7CD0E4003A3C60 /* Assets.xcassets in Resources */,
 				D4BDF4F31D7CD0E4003A3C60 /* Main.storyboard in Resources */,
 			);
@@ -226,7 +221,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		69C75D0E13832F09017DE086 /* [CP] Embed Pods Frameworks */ = {
+		240E593ED0A2088AF46A3FBB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -241,7 +236,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rated/Pods-Rated-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		71AF7EC3E9928E0CA96D3505 /* [CP] Copy Pods Resources */ = {
+		BC6CB2A06F17B986E5B92A59 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -256,7 +251,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Rated/Pods-Rated-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8F4938E5F318D3E42B9953E6 /* [CP] Check Pods Manifest.lock */ = {
+		CDB1C7A8D2807F5F6BF45258 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -278,16 +273,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4D85FD91DC4F9A800DFC441 /* LoginViewController.swift in Sources */,
 				D4BDF4EE1D7CD0E4003A3C60 /* AppDelegate.swift in Sources */,
 				D4D1DC9B1D7DB84B00953494 /* RatingTableViewCell.swift in Sources */,
-				D4C20FE71D9E0C5700617E3A /* UserProfileViewController.swift in Sources */,
-				D4D1DC9D1D7E436800953494 /* RatingViewController.swift in Sources */,
+				D433BB431DC45C48002C1F70 /* RatingsTableViewController.swift in Sources */,
 				D4DD802E1DB7046400ED6A5B /* CreateRatingDetailsViewController.swift in Sources */,
-				D42D3DE31DA73218008254F2 /* RatingsViewController.swift in Sources */,
 				D410C4F21D8DD80B00A15EED /* Rater.swift in Sources */,
 				D462F7881D8E4662006CBCF9 /* Rating.swift in Sources */,
-				D42D3DE51DA73FC0008254F2 /* FollowedRatingsViewController.swift in Sources */,
-				D40334EF1D810D5900051DE9 /* LoginViewController.swift in Sources */,
 				D4BDF50D1D7CDB2F003A3C60 /* CreateRatingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,7 +398,7 @@
 		};
 		D4BDF5001D7CD0E4003A3C60 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D26C0D4A570B0036308A69FE /* Pods-Rated.debug.xcconfig */;
+			baseConfigurationReference = B8FF0B642AB7D3F0380CB1AB /* Pods-Rated.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -428,7 +420,7 @@
 		};
 		D4BDF5011D7CD0E4003A3C60 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F5B67E4218568EA4FD663C8 /* Pods-Rated.release.xcconfig */;
+			baseConfigurationReference = 78637525B587F91B71C7B03D /* Pods-Rated.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
