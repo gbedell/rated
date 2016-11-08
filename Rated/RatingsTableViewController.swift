@@ -32,14 +32,14 @@ class RatingsTableViewController: UITableViewController {
     
     // Mark: Actions
     
-    @IBAction func didTapLogoutButton(_ sender: UIButton) {
-        try! FIRAuth.auth()?.signOut()
-        FBSDKAccessToken.setCurrent(nil)
-        
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let loginViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginView")
-        self.present(loginViewController, animated: true, completion: nil)
-    }
+//    @IBAction func didTapLogoutButton(_ sender: UIButton) {
+//        try! FIRAuth.auth()?.signOut()
+//        FBSDKAccessToken.setCurrent(nil)
+//        
+//        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let loginViewController = mainStoryboard.instantiateViewController(withIdentifier: "LoginView")
+//        self.present(loginViewController, animated: true, completion: nil)
+//    }
     
     // Mark: - Lifecycle methods
 
